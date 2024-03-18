@@ -1,0 +1,140 @@
+@media screen and (max-width: 468px) {
+	div{
+		width: 100%;
+	}
+}
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    background-color: lightskyblue;
+}
+
+#eqip {
+    width: 66%;
+    height: 67%;
+    margin-top: auto;
+    display: flex;
+    background-color: white;
+}
+
+.pet-line {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end; /* 우측 정렬 */
+}
+
+#petline_1,
+#petline_2,
+#petline_3 {
+    margin-top: auto;
+    display: flex;
+    width: 33%;
+    height: 66%;
+    gap: 2px;
+}
+
+#pet{
+    width: 66%;
+    height: 33%;
+    margin-top: auto;
+    display: flex;
+    background-color: lightslategrey;
+}
+
+.item {
+    width: 48px;
+    height: 48px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+.itemimg {
+    width: 48px;
+    height: 48px;
+}
+
+.item-line {
+    width: 258px; /* 수정된 크기 */
+    height: 300px;
+    display: flex;
+}
+
+/* 새로 추가된 스타일 */
+.item-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.block{
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border: 1px solid white;
+}
+/* 팝업 */
+.star_force_line{
+ 	display: none;
+	width: 180px;
+	padding-left: 30px; /* 수평 padding 적용 */
+    padding-right: 30px; /* 수평 padding 적용 */
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.item_popup_main{
+ 	display: none;
+ 	position: absolute;
+	left: 49.8%;
+	width: 245px;
+	padding: 10px;
+	background-color: rgba(128,128,128,0.5);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.item_top_line{
+	text-align: center;
+	font-weight: bold;
+}
+.item_icon_line{
+	margin-top: 10px;
+	padding: 10px;
+	border: 2px solid #ccc;
+}
+#img_icon{
+	width: 45px;
+    height: 45px;
+}
+.item_potential_line{
+	font-size: 10px;
+}
+.레어{
+	border: 2px solid rgba(0,153,204);
+	box-shadow: 0 0 1px #000;
+	border-radius: 5px;
+	width:20%;
+	height:20%;
+}
+.에픽{
+	border: 2px solid rgba(119,0,204);
+	box-shadow: 0 0 1px #000;
+	border-radius: 5px;
+	width:20%;
+	height:20%;
+}
+.유니크{
+	border: 2px solid rgba(252,205,53);
+	box-shadow: 0 0 1px #000;
+	border-radius: 5px;
+	width:20%;
+	height:20%;
+}
+.레전드리{
+	border: 2px solid rgba(0,204,153);
+	box-shadow: 0 0 1px #000;
+	border-radius: 5px;
+	width:20%;
+	height:20%;
+}
