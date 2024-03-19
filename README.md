@@ -44,3 +44,4 @@ rule:
 즉 내가 부족한 부분을 채워주고
 상대가 부족한 부분을 채워주는게
 팀
+"https://api.atlasacademy.io/nice/KR/servant/100100" 
