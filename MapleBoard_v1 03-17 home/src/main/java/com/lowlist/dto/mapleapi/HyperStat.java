@@ -8,6 +8,7 @@ public class HyperStat {
 	public String date;
 	public String character_class;
 	public String character_name;
+	public String json_data;
 	public String use_preset_no;
 	public Integer use_available_hyper_stat;
 	public Integer hyper_stat_preset_no;

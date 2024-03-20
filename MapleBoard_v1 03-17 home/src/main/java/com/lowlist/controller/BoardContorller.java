@@ -1,14 +1,11 @@
 package com.lowlist.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lowlist.dto.android.AndroidInfo;
 import com.lowlist.dto.item.ItemInfo;
@@ -37,15 +34,12 @@ public class BoardContorller {
 	}
 	
 	@GetMapping("/mapleapi")
-	public void mapleapis(Model model,
-			@RequestParam("id") String id,
-			@RequestParam("preset") int preset 
-			) throws Exception {
+	public void mapleapis(Model model,@RequestParam("id") String id) throws Exception {
 		BasicData mapleapi = service.selectBasic(id);
-		List<StatData> selstatdata = service.selectStatData(id);
-		List<HyperStat> hyperstat = service.selectHyperStat(id,preset);
+		StatData selstatdata = service.selectStatData(id);
+		HyperStat hyperstat = service.selectHyperStat(id);
 		Propensity propensity =service.selectPropensity(id);
-		List<Ability> ability = service.selectAbility(id);
+		Ability ability = service.selectAbility(id);
 		model.addAttribute("hyper",hyperstat);
 		model.addAttribute("stat", selstatdata);
 		model.addAttribute("maple", mapleapi);
@@ -55,14 +49,13 @@ public class BoardContorller {
 	
 	@GetMapping("/equip")
 	public String mapleapisss(Model model,
-			@RequestParam("id") String id,
-			@RequestParam("preset") int preset 
+			@RequestParam("id") String id
 			) throws Exception {
 		BasicData mapleapi = service.selectBasic(id);
-		List<StatData> selstatdata = service.selectStatData(id);
-		List<HyperStat> hyperstat = service.selectHyperStat(id,preset);
+		StatData selstatdata = service.selectStatData(id);
+		HyperStat hyperstat = service.selectHyperStat(id);
 		Propensity propensity =service.selectPropensity(id);
-		List<Ability> ability = service.selectAbility(id);
+		Ability ability = service.selectAbility(id);
 		ItemInfo itemequipdata = service.selectItemEquip(id);
 		AndroidInfo android = service.selectAndroid(id);
 		model.addAttribute("item",itemequipdata);

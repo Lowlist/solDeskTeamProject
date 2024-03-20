@@ -9,6 +9,7 @@ public class StatData {
 
 	public String date;
 	public String character_class;
+	public String json_data;
 	public List<StatCalc> final_stat;
 	public Integer remain_ap;
 	public String character_name;

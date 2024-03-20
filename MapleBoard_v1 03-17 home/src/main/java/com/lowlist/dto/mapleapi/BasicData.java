@@ -8,6 +8,7 @@ public class BasicData {
 	public int id;
 	public String date;
 	public String character_name;
+	public String json_data;
 	public String world_name;
 	public String character_gender;
 	public String character_class;

@@ -49,28 +49,16 @@ CREATE TABLE basicData (
 
 CREATE TABLE statData(
 	`no` INT PRIMARY KEY AUTO_INCREMENT,
-    `date` VARCHAR(255),
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `character_name` VARCHAR(255),
-    `remain_ap` int,
-    `stat_name` TEXT,
-    `stat_value` TEXT
+    `json_data` MEDIUMTEXT
 );
 
 CREATE TABLE hyperStat(
 	`no` INT PRIMARY KEY AUTO_INCREMENT,
-    `date` VARCHAR(255),
-    `character_class` VARCHAR(255),
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `character_name` VARCHAR(255),
-    `use_preset_no` VARCHAR(255),
-    `use_available_hyper_stat` int,
-    `hyper_stat_preset_no` int,
-    `hyper_stat_preset_1_remain_point` int,
-    `hyper_stat_preset_2_remain_point` int,
-    `hyper_stat_preset_3_remain_point` int,
-    `stat_type` text,
-    `stat_point` int,
-    `stat_level` int,
-    `stat_increase` text
+    `json_data` MEDIUMTEXT
 );
 
 CREATE TABLE propensity(
@@ -87,14 +75,9 @@ CREATE TABLE propensity(
 
 CREATE TABLE ability(
 	`no` INT PRIMARY KEY AUTO_INCREMENT,
-    `date` VARCHAR(255),
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `character_name` VARCHAR(255),
-    `remain_fame` int,
-    `preset_no` int,
-    `ability_preset_appoint_no` varchar(255),
-    `ability_preset_no` VARCHAR(255),
-    `ability_preset_value` VARCHAR(255),
-    `ability_preset_grade` VARCHAR(255)
+    `json_data` MEDIUMTEXT
 );
 create table itemEquip(
 	`no` INT PRIMARY KEY AUTO_INCREMENT,

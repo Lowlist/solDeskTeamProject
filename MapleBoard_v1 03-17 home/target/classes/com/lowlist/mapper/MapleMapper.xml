@@ -9,34 +9,12 @@
 	</insert>
 	
 	<insert id="insertHyperStat">
-		insert into hyperStat(
-		date,
-		character_class,
+		insert into HyperStat(
 		character_name,
-		use_preset_no,
-		use_available_hyper_stat,
-		hyper_stat_preset_no,
-		hyper_stat_preset_1_remain_point,
-		hyper_stat_preset_2_remain_point,
-		hyper_stat_preset_3_remain_point,
-		stat_type,
-		stat_point,
-		stat_level,
-		stat_increase
+		json_data
 		)values(
-		#{date},
-		#{character_class},
 		#{character_name},
-		#{use_preset_no},
-		#{use_available_hyper_stat},
-		#{hyper_stat_preset_no},
-		#{hyper_stat_preset_1_remain_point},
-		#{hyper_stat_preset_2_remain_point},
-		#{hyper_stat_preset_3_remain_point},
-		#{stat_type},
-		#{stat_point},
-		#{stat_level},
-		#{stat_increase}
+		#{json_data}	
 		)
 	</insert>
 	
@@ -70,17 +48,11 @@
 	
 	<insert id="insertStatData">
 		insert into statData(
-		date,
 		character_name,
-		remain_ap,
-		stat_name,
-		stat_value
+		json_data
 		)values(
-		#{date},
 		#{character_name},
-		#{remain_ap},
-		#{stat_name},
-		#{stat_value}
+		#{json_data}	
 		)
 	</insert>
 	
@@ -108,25 +80,14 @@
 	
 	<insert id="insertAbility">
 		insert into ability(
-		date,
 		character_name,
-		remain_fame,
-		preset_no,
-		ability_preset_appoint_no,
-		ability_preset_no,
-		ability_preset_value,
-		ability_preset_grade
+		json_data
 		)values(
-		#{date},
 		#{character_name},
-		#{remain_fame},
-		#{preset_no},
-		#{ability_preset_appoint_no},
-		#{ability_preset_no},
-		#{ability_preset_value},
-		#{ability_preset_grade}
+		#{json_data}	
 		)
 	</insert>
+	
 	<insert id="insertItemEquip">
 		insert into itemEquip(
 		character_name,
@@ -155,26 +116,33 @@
 		select count(*) from ${table_name} where character_name=#{character_name}
 	</select>
 	
-	<select id="selectStatData" resultType="com.lowlist.dto.mapleapi.StatData">
-		select * from statData where character_name=#{character_name}
-	</select>
-	
 	<select id="selectBasicData" resultType="com.lowlist.dto.mapleapi.BasicData">
 		select * from basicData where character_name=#{character_name}
 	</select>
 	
-	<select id="selectHyperStatData" resultType="com.lowlist.dto.mapleapi.HyperStat">
-		select * from hyperStat 
-		where character_name=#{character_name}
-		and hyper_stat_preset_no=#{hyper_stat_preset_no}
-	</select>
 	
 	<select id="selectPropensity" resultType="com.lowlist.dto.mapleapi.Propensity">
 		select * from propensity where character_name=#{character_name}
 	</select>
 	
-	<select id="selectAbility" resultType="com.lowlist.dto.mapleapi.Ability">
-		select * from ability where character_name=#{character_name}
+	<select id="selectStatData" resultType="String">
+		select json_data from statData where character_name=#{character_name}
+	</select>
+	
+	<select id="selectHyperStatData" resultType="String">
+		select json_data from hyperStat where character_name=#{character_name}
+	</select>
+	
+	<select id="selectAbility" resultType="String">
+		select json_data from ability where character_name=#{character_name}
+	</select>
+	
+	<select id="selectItemEquip" resultType="String">
+		select json_data from itemEquip where character_name=#{character_name}
+	</select>
+	
+	<select id="selectAndroid" resultType="String">
+		select json_data from android where character_name=#{character_name}
 	</select>
 	
 	<delete id="deleteStatData">
@@ -184,12 +152,4 @@
 	<delete id="deleteBasicData">
 	
 	</delete>
-	<select id="selectItemEquip" resultType="String">
-		select json_data from itemEquip where character_name=#{character_name}
-	</select>
-	
-	<select id="selectAndroid" resultType="String">
-		select json_data from android where character_name=#{character_name}
-	</select>
-	
 </mapper>

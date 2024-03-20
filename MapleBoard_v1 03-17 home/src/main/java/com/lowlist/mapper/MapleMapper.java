@@ -1,7 +1,5 @@
 package com.lowlist.mapper;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import com.lowlist.dto.android.AndroidInfo;
@@ -30,10 +28,10 @@ public interface MapleMapper {
 		//셀렉트문
 		public String selectOcid(Ocid name);
 		public BasicData selectBasicData(BasicData name);
-		public List<StatData> selectStatData(StatData statdata);
-		public List<HyperStat> selectHyperStatData(HyperStat hyperstat);
 		public Propensity selectPropensity(Propensity propensity);
-		public List<Ability> selectAbility(Ability ability);
+		public String selectStatData(StatData statdata);
+		public String selectAbility(Ability ability);
+		public String selectHyperStatData(HyperStat hyperstat);
 		public String selectItemEquip(ItemInfo itemInfo);
 		public String selectAndroid(AndroidInfo androidInfo);
 }	

@@ -158,6 +158,7 @@
 #item_20{
 	order: 33;
 }
+
 /* 팝업 */
 .item_popup_main{
 	 display: none;
@@ -228,3 +229,8 @@
 	width:20%;
 	height:20%;
 }
+.item_option_line_popup{
+	font-size: 13px;
+	display:flex;
+}
+

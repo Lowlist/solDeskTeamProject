@@ -19,7 +19,7 @@ public class ItemAddOption {
 	    public String speed;
 	    public String jump;
 	    public String boss_damage;
-	    public String damage;
 	    public String all_stat;
+	    public String damage;
 	    public int equipment_level_decrease;
 }

@@ -9,6 +9,7 @@ public class Ability {
 	public String date;
 	public String ability_grade;
 	public String character_name;
+	public String json_data;
 	public List<AbilityInfo> ability_info;
 	public Integer remain_fame;
 	public Integer preset_no;

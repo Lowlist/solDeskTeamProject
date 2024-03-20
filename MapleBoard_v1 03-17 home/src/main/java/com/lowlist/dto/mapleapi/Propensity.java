@@ -6,6 +6,7 @@ import lombok.Data;
 public class Propensity {
 	public String date;
 	public String character_name;
+	public String json_data;
 	public Integer charisma_level;
 	public Integer sensibility_level;
 	public Integer insight_level;

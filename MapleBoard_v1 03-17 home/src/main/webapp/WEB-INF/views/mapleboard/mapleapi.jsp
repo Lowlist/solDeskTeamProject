@@ -18,6 +18,7 @@ document.write(returndate);
 <div>
 닉네임:${maple.character_name}
 </div>
+<img src="${maple.character_image}" alt="캐릭터이미지">
 <br>
 레벨:${maple.character_level}
 <br>
@@ -26,15 +27,15 @@ document.write(returndate);
 <hr>
 기본스탯
 <hr>
-	<c:forEach var="statview" items="${stat}">
-		${statview.stat_name}:
-		${statview.stat_value}
+	<c:forEach var="view" items="${stat.final_stat}">
+		${view.stat_name}:
+		${view.stat_value}
 		<br>
 	</c:forEach>
 	<hr>
 	하이퍼스탯
 	<hr>
-	<c:forEach var="hyperview" items="${hyper}">
+	<c:forEach var="hyperview" items="${hyper.hyper_stat_preset_1}">
 		${hyperview.stat_type}
 		${hyperview.stat_point}
 		${hyperview.stat_level}
@@ -56,12 +57,41 @@ document.write(returndate);
 	<br>
 	매력:${propensity.charm_level}
 	<br>
-	<c:forEach var="abilityview" items="${ability}">
-		${abilityview.ability_preset_no}
-		${abilityview.ability_preset_value}
-		${abilityview.ability_preset_grade}
+	<hr>
+	현재 사용 어빌리티
+	<hr>
+	<c:forEach var="view" items="${ability.ability_info}">
+		${view.ability_no}.
+		[${view.ability_grade}]
+		${view.ability_value}
 		<br>
 	</c:forEach>
-	<img src="${maple.character_image}" alt="캐릭터이미지">
+	<br>
+	프리셋 1번
+	<hr>
+	<c:forEach var="view" items="${ability.ability_preset_1.ability_info}">
+		${view.ability_no}.
+		[${view.ability_grade}]
+		${view.ability_value}
+		<br>
+	</c:forEach>
+	<br>
+	프리셋 2번
+	<hr>
+	<c:forEach var="view" items="${ability.ability_preset_2.ability_info}">
+		${view.ability_no}.
+		[${view.ability_grade}]
+		${view.ability_value}
+		<br>
+	</c:forEach>
+	<br>
+	프리셋 3번
+	<hr>
+	<c:forEach var="view" items="${ability.ability_preset_3.ability_info}">
+		${view.ability_no}.
+		[${view.ability_grade}]
+		${view.ability_value}
+		<br>
+	</c:forEach>
 </body>
 </html>

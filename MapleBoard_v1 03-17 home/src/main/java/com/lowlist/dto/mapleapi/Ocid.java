@@ -7,4 +7,5 @@ public class Ocid {
 	
 	private String ocid;
 	private String character_name;
+	
 }

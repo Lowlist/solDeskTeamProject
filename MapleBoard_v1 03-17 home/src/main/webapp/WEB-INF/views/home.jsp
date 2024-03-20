@@ -16,8 +16,6 @@
 	<form>
 	이름:<input type="text" id="name">
 	<br>
-	프리셋:<input type="text" id="preset">
-	<br>
 	<input type="button" id="maincontent" value="Click Me">
 	</form>
 	<div id="datas"></div>
