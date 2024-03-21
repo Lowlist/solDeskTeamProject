@@ -5,10 +5,18 @@ $(document).ready(function() {
         let dataName = String($(this).data('name'));
         let dataPotential = String($(this).data('potential'));
         let itemIcon = $(this).find('img').attr('src');
+        let totalstr = String($(this).data('total_str'));
+        let totaldex = String($(this).data('total_dex'));
+        let totalint = String($(this).data('total_int'));
+        let totalluk = String($(this).data('total_luk'));
         starForceRun(starForceData, equip_level,dataName);
         $('#item_name_popup').text(dataName);
         //? 을 사용해서 있으면 true 없으면 false 반환
         $('#potential_popup').text(dataPotential ? "(" + dataPotential + " 아이템)" : "");
+        $('#total_str_popup').text(totalstr ? "STR:(" + totalstr + " )" : "");
+        $('#total_dex_popup').text(totaldex ? "DEX:(" + totaldex + " )" : "");
+        $('#total_int_popup').text(totalint ? "INT:(" + totalint + " )" : "");
+        $('#total_luk_popup').text(totalluk ? "LUK:(" + totalluk + " )" : "");
         $('#item_icon_popup').attr('src', itemIcon).attr('class', dataPotential);
         $('.item_popup_main').show();
         $('.starforce_line_popup').show();

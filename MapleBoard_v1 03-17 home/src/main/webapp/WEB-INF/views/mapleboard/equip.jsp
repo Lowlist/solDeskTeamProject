@@ -26,6 +26,12 @@
     <div class="icon_line_popup">
         <img id="item_icon_popup">
     </div>
+    <div class="option_line_popup">
+    <div id="total_str_popup"></div>
+    <div id="total_dex_popup"></div>
+    <div id="total_int_popup"></div>
+    <div id="total_luk_popup"></div>
+    </div>
 </div>
 
 <div class="eqip_main">
