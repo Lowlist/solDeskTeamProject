@@ -20,7 +20,7 @@
 <div class="item_popup_main">
     <div id="starforce_popup" class="starforce_line_popup"></div>
     <div class="top_line_popup">
-        <div id="item_name_popup"></div><br>
+        <div id="item_name_popup"></div>
         <div class="potential_line_popup" id="potential_popup"></div>
     </div>
     <div class="icon_line_popup">
@@ -28,14 +28,28 @@
     </div>
    	<c:forEach var="i" begin="0" end="18">
 	    <div class="item_option_line_popup">
-		    	<div id="item_option_total_popup_${i}"></div>
-		    	<div id="item_option_bace_popup_${i}"></div>
-		    	<div id="item_option_add_popup_${i}"></div>
-		    	<div id="item_option_etc_popup_${i}"></div>
-		    	<div id="item_option_starforce_popup_${i}"></div>
-		    	<div id="item_option_line"></div>
+		    <div id="item_option_total_popup_${i}" class="total_option_div"></div>
+		    <div id="item_option_bace_popup_${i}" class="bace_option_div"></div>
+		    <div id="item_option_add_popup_${i}" class="add_option_div"></div>
+		    <div id="item_option_etc_popup_${i}" class="etc_option_div"></div>
+		    <div id="item_option_starforce_popup_${i}" class="starforce_option_div"></div>
+		    <div id="item_option_line_${i}" class="line_option_div"></div>
 	    </div>
     </c:forEach>
+    <c:forEach var="i" begin="0" end="1">
+	    <div class="item_potential_line_popup_${i}">
+		    <div class="item_potential_img_line_${i}">
+		    	<img id="item_potential_icon_popup_${i}">
+		    	<div id="item_potential_popup_${i}"></div>
+		    </div>
+    	</div>
+    	<div class="item_potential_option_line_popup_${i}">
+	    	<div id="item_potential_option_1_${i}" class="item_potential_option_1_class_${i}"></div>
+	    	<div id="item_potential_option_2_${i}" class="item_potential_option_2_class_${i}"></div>
+	    	<div id="item_potential_option_3_${i}" class="item_potential_option_3_class_${i}"></div>
+	    </div>
+    </c:forEach>
+    	
 </div>
 
 <div class="eqip_main">
@@ -46,7 +60,17 @@
                     data-starforce="${item.item_equipment.get(i).starforce}"
                     data-equip_level="${item.item_equipment.get(i).item_base_option.base_equipment_level}"
                     data-name="${item.item_equipment.get(i).item_name}"
+                    
                     data-potential="${item.item_equipment.get(i).potential_option_grade}"
+                    data-potential_option_1="${item.item_equipment.get(i).potential_option_1}"
+                    data-potential_option_2="${item.item_equipment.get(i).potential_option_2}"
+                    data-potential_option_3="${item.item_equipment.get(i).potential_option_3}"
+					
+                    data-additional_potential="${item.item_equipment.get(i).additional_potential_option_grade}"
+                    data-additional_potential_option_1="${item.item_equipment.get(i).additional_potential_option_1}"
+                    data-additional_potential_option_2="${item.item_equipment.get(i).additional_potential_option_2}"
+                    data-additional_potential_option_3="${item.item_equipment.get(i).additional_potential_option_3}"
+                    
                     
                     data-total_str="${item.item_equipment.get(i).item_total_option.str}"
                     data-base_str="${item.item_equipment.get(i).item_base_option.str}"
@@ -121,7 +145,7 @@
 	                data-total_ignore_monster_armor="${item.item_equipment.get(i).item_total_option.ignore_monster_armor}"
 	                data-base_ignore_monster_armor="${item.item_equipment.get(i).item_base_option.ignore_monster_armor}"
 	                
-	                data-total_ignore_all_stat="${item.item_equipment.get(i).item_total_option.all_stat}"
+	                data-total_all_stat="${item.item_equipment.get(i).item_total_option.all_stat}"
 	                data-base_all_stat="${item.item_equipment.get(i).item_base_option.all_stat}"
 	                data-add_all_stat="${item.item_equipment.get(i).item_add_option.all_stat}"
 	                
@@ -155,8 +179,10 @@
     <div class="pet_main">
         <c:forEach var="i" begin="1" end="3">
             <div class="pet-line" id="petline_${i}">
-                <div class="item" id="pet_${i}"></div>
-                <div class="item" id="petacc_${i}"></div>
+                <div class="item" id="pet_${i}">
+                </div>
+                <div class="item" id="petacc_${i}">
+                </div>
             </div>
         </c:forEach>
     </div>
