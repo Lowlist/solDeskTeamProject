@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: sdedu
+<<<<<<< HEAD:MapleBoard_v1 03-17 home/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+Build-Jdk: 11.0.22
+=======
+Build-Jdk: 11.0.21
+>>>>>>> 46591e2ffbf8905cec56337e08720184067f9965:SolDeskTeamProject_0.0.1/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+Created-By: Maven Integration for Eclipse
+
