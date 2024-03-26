@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 <<<<<<< HEAD:MapleBoard_v1 03-17 home/.project
 	<name>MapleBoard_V2</name>
 =======
 	<name>SolDeskTeamProject_0.0.1</name>
 >>>>>>> 46591e2ffbf8905cec56337e08720184067f9965:SolDeskTeamProject_0.0.1/.project
+=======
+	<name>SolDeskTeamProject_0.0.1</name>
+>>>>>>> 46591e2ffbf8905cec56337e08720184067f9965
 	<comment></comment>
 	<projects>
 	</projects>
