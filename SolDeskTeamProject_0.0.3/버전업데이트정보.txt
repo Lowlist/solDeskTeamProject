@@ -1,0 +1,3 @@
+v0.0.1 - Spring MVC 패턴 프로토타입 제작
+v0.0.2 - Main.jsp 의 탬플릿 작성 및 Dto ServiceImpl 측 api불러오는 임시코드 작성
+v0.0.3 - Div/Css Class명 수정 및 ServiceImpl 측 livingWeather 갱신 및 area의 Parameter 변환코드 작성
