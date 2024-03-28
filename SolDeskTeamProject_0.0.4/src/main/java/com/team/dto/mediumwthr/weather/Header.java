@@ -1,4 +1,4 @@
-package com.team.dto.mediumwthr.temperature;
+package com.team.dto.mediumwthr.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown =true)
-public class Root{
-    public Response response;
+public class Header{
+    public String resultCode;
+    public String resultMsg;
 }

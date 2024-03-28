@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.dto.asosdalyinfo.AsosDalyInfo;
 import com.team.dto.livingwthr.LivingWeather;
 import com.team.dto.mediumwthr.temperature.MediumWeather;
+import com.team.dto.mediumwthr.weather.WeatherInfo;
 import com.team.mapper.WeatherMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -62,11 +63,32 @@ public class WeatherServiceImpl implements WeatherService {
 		}
 	}
 	
-	// 형주
+	// 형주 중기기상예보 온도api
 	public String MediumTemperaturesApi(String area) {
 		String API_URL = 
 				MEDIUM_WEATHER_URL + "getMidTa?serviceKey=" +
 				API_KEY + "&numOfRows=10&pageNo=1&regId="+ returnMediumAreaNum(area) +"&tmFc="+ nowTime() +"&dataType=JSON" ;
+		System.out.println(API_URL);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set(METHOD, FORM);
+		// 헤더 끝
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		URI uri = null;
+		try {
+			uri = new URI(API_URL);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		return response.getBody();
+	}
+	//형주 중기기상예보 날씨api
+	public String MediumWeatherApi(String area) {
+		String API_URL = 
+				MEDIUM_WEATHER_URL + "getMidLandFcst?serviceKey=" +
+						API_KEY + "&numOfRows=10&pageNo=1&regId="+ returnMediumRegionNum(area) +"&tmFc="+ nowTime() +"&dataType=JSON" ;
 		System.out.println(API_URL);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -170,13 +192,25 @@ public class WeatherServiceImpl implements WeatherService {
 		return response;
 	}
 	
-	// 형주
+	// 형주 중기예보 온도
 	@Override
-	public MediumWeather mediumWeatherRun(String area) {
+	public MediumWeather mediumTemperatureRun(String area) {
 		MediumWeather response = new MediumWeather();
 		String jsonData = MediumTemperaturesApi(area);
 		try {
 			response = objectMapper.readValue(jsonData,MediumWeather.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
+	// 형주 중기예보 날씨
+	@Override
+	public WeatherInfo mediumWeatherRun(String area) {
+		WeatherInfo response = new WeatherInfo();
+		String jsonData = MediumWeatherApi(area);
+		try {
+			response = objectMapper.readValue(jsonData,WeatherInfo.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -339,7 +373,7 @@ public class WeatherServiceImpl implements WeatherService {
 		return area;
 	} 
 	
-	// 형주
+	// 형주 중기예보 온도
 	public String returnMediumAreaNum(String area) {
 		if(area.equals("서울")) {
 			area="11B10101";
@@ -412,6 +446,40 @@ public class WeatherServiceImpl implements WeatherService {
 		}
 		else if(area.equals("포항")) {
 			area="11H10201";
+		}
+		return area;
+	} 
+	//형주 중기예보 날씨
+	public String returnMediumRegionNum(String area) {
+		if(area.equals("서울") || area.equals("인천") || area.equals("경기도")) {
+			area="11B00000";
+		}
+		else if(area.equals("강원도영서")) {
+			area="11D10000";
+		}
+		else if(area.equals("강원도영동")) {
+			area="11D20000";
+		}
+		else if(area.equals("대전") || area.equals("세종") || area.equals("충청남도")) {
+			area="11C20000";
+		}
+		else if(area.equals("충청북도")) {
+			area="11C10000";
+		}
+		else if(area.equals("광주") || area.equals("전라남도")) {
+			area="11F20000";
+		}
+		else if(area.equals("전라북도")) {
+			area="11F10000";
+		}
+		else if(area.equals("대구") || area.equals("경상북도")) {
+			area="11H10000";
+		}
+		else if(area.equals("부산") || area.equals("울산") || area.equals("경상남도")) {
+			area="11H20000";
+		}
+		else if(area.equals("제주도")) {
+			area="11G00000";
 		}
 		return area;
 	} 
