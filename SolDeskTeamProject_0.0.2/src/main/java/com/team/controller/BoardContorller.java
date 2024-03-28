@@ -24,7 +24,7 @@ public class BoardContorller {
 	public void test(@RequestParam("area") String area,Model model){
 		log.info("컨트롤러테스트");
 		System.out.println("컨트롤러테스트");
-		model.addAttribute("as",service.jsonRun(area));
+		model.addAttribute("living",service.livingWeatherRun(area));
 	}
 	
 }

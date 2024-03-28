@@ -13,53 +13,66 @@
 </head>
 <body>
 ㅋㅋㅋㅋㅋ
-${as.response.body.items.item.get(0).h6}
-    <!-- 메인 홈 시작 -->
-    <div class="main_home">
-
+2024-03-27 09시 : ${living.response.body.items.item.get(0).h3}
+<br>
+2024-03-27 12시 : ${living.response.body.items.item.get(0).h6}
+<br>
+2024-03-27 15시 : ${living.response.body.items.item.get(0).h9}
+<br>
+2024-03-27 18시 : ${living.response.body.items.item.get(0).h12}
+<br>
+2024-03-27 21시 : ${living.response.body.items.item.get(0).h15}
+<br>
+2024-03-28 00시 : ${living.response.body.items.item.get(0).h18}
+<br>
+2024-03-28 03시 : ${living.response.body.items.item.get(0).h21}
+<br>
+2024-03-28 03시 : ${living.response.body.items.item.get(0).h21}
+     <!-- 메인 홈 시작 -->
+    <div class="main-home">
     <!-- 메인 홈 톱 시작 -->
-        <div class="main_home_top_line">
-            <div class="home_top_icon_line">
+        <div class="main-home-top-line">
+            <div class="home-top-icon-line">
             </div>
-            <div class="home_top_menu_line">
+            <div class="home-top-menu-line">
             </div>
         </div>
     <!-- 메인 홈 톱 끝 -->
 
     <!-- 메인 홈 하이 시작 -->
-        <div class="main_home_high_line">
-            <div class="home_high_icon_line">
+        <div class="main-home-high-line">
+            <div class="home-high-icon-line">
             </div>
-            <div class="home_high_serach_line">
-                <div class="home_high_left_serach_line">
-                </div>
-                <div class="home_high_right_serach_line">
-                </div>
-            </div>
+	        <div class="home-high-serach-line">
+	            <div class="home-high-left-serach-line">
+	            </div>
+	            <div class="home-high-right-serach-line">
+	            </div>
+	        </div>
         </div>
     <!-- 메인 홈 하이 끝 -->
 
     <!-- 메인 홈 헤더 시작 -->
-        <div class="main_home_header_line">
+        <div class="main-home-header-line">
 
         </div>
     <!-- 메인 홈 헤더 끝 -->
 
     <!-- 메인 홈 센터 시작 -->
-        <div class="main_home_center_line">
-            <div class="home_center_left_line">
-                <div class="home_center_left_top_line">
+        <div class="main-home-center-line">
+            <div class="home-center-left-line">
+                <div class="home-center-left-top-line">
                 </div>
-                <div class="home_center_left_bottom_line">
+                <div class="home-center-left-bottom-line">
                 </div>
             </div>
-            <div class="home_center_right_line">
+            <div class="home-center-right-line">
             </div>
         </div>
     <!-- 메인 홈 센터 끝 -->
 
     <!-- 메인 홈 바텀 시작 -->
-        <div class="main_home_bottom_line">
+        <div class="main-home-bottom-line">
 
         </div>
     <!-- 메인 홈 바텀 끝 -->
