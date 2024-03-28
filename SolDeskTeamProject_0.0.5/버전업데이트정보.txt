@@ -1,0 +1,5 @@
+v0.0.1 - Spring MVC 패턴 프로토타입 제작
+v0.0.2 - Main.jsp 의 탬플릿 작성 및 Dto ServiceImpl 측 api불러오는 임시코드 작성
+v0.0.3 - Div/Css Class명 수정 및 ServiceImpl 측 livingWeather 갱신 및 area의 Parameter 변환코드 작성
+v0.0.4 - ASOS 종관 날씨 API 추가 및 중기예보 API 추가 중기예보 JSP,CSS 추가 / 중기 예보담당:형주
+v0.0.5 - Service 부분 개편 각 기능별 class 나눔 / 중기예보 온도,날씨 별 코드 분리 / 기타 코드 가독성 향상을 위한 변경(publicWork class 추가 후 공용함수 분배) 
