@@ -67,14 +67,14 @@
 }
 .medium-left-line{
     display: flex;
-    width: 40%;
+    width: 55%;
     height: 100%;
     margin-left: auto;
     background-color: aqua;
 }
 .home-center-right-line{
     display: flex;
-    width: 25%;
+    width: 15%;
     height: 100%;
     margin-right: auto;
     background-color: violet;
