@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<!-- 내가 추가한거 -->
+	<!-- 커넥션 풀 - 아파치 - Commons DBCP 2.8.0 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<!-- log4jdbc.log4j2 때문에 기존 코드 주석친거 -->
+		<!-- 
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/my_board" />
+ 		-->			
+		<!-- 시작 끝 -->
+		<!-- log4jdbc.log4j2 때문에 수정 삽입한거 -->
+		<!-- 시작 -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/maple_board"></property>			
+		<!-- 이거 오라클임 마이에스큐엘로 수정해야함 -->
+		<!-- 끝 -->
+
+		<property name="username" value="root" /><!-- db 계정에 맞게 수정 -->
+		<property name="password" value="root" /><!-- db 계정에 맞게 수정 -->
+	</bean>
+
+	<!-- 내가 추가한거 -->
+	<!-- SQLSessionFactiory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 내가 추가한거 -->
+	<!-- mybatis - mapper 설정 -->
+	<mybatis-spring:scan
+		base-package="com.team.mapper" />
+	<!-- 내가 추가한거 -->
+	<context:component-scan base-package="com.team.service">
+	</context:component-scan>
+	<!-- 내가 추가한거 -->
+	<!-- <context:component-scan base-package="org.zerock.sample"> </context:component-scan> -->
+</beans>
