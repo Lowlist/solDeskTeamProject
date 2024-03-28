@@ -2,3 +2,18 @@
 
 
 	조장님 나중에 MERGE하실때  삭제해주세요 아니면 제가 할게요~
+	
+
+	내가 겪은에러 모음
+
+	(2024-03-28)의 에러 :
+ 
+	1.@Data (lombok 임포트안함) 으로 인해 getter setter 가 api dto에
+	안만들어져서 불러올수가 없어서 에러남
+
+	2.@JsonIgnoreProperties(ignoreUnknown =true) 를 안적어서 api를 java내장객체
+	objectmapper로 불러올때 안에있는 특성(class,변수등)을 다 불러오려고하기때문에
+	api dto에 써줘야 되는데 안써줘서 500에러 남.
+	
+	3.위에 두개 다른 api로 받아온 클래스에 적용시키려고 복붙했는데 임포트까지 
+	복붙되서 경로가 다른 패키지랑 꼬여버려서 에러남. 

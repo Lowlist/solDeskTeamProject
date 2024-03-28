@@ -64,7 +64,7 @@ public class WeatherServiceImpl implements WeatherService {
 	}
 	
 	// 형주 중기기상예보 온도api
-	public String MediumTemperaturesApi(String area) {
+	public String mediumTemperaturesApi(String area) {
 		String API_URL = 
 				MEDIUM_WEATHER_URL + "getMidTa?serviceKey=" +
 				API_KEY + "&numOfRows=10&pageNo=1&regId="+ returnMediumAreaNum(area) +"&tmFc="+ nowTime() +"&dataType=JSON" ;
@@ -196,7 +196,7 @@ public class WeatherServiceImpl implements WeatherService {
 	@Override
 	public MediumWeather mediumTemperatureRun(String area) {
 		MediumWeather response = new MediumWeather();
-		String jsonData = MediumTemperaturesApi(area);
+		String jsonData = mediumTemperaturesApi(area);
 		try {
 			response = objectMapper.readValue(jsonData,MediumWeather.class);
 		} catch (Exception e) {
