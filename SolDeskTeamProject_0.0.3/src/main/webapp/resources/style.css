@@ -1,0 +1,62 @@
+/* 전체 컨테이너 스타일 */
+.dust-main {
+    width: 1000px; /* 전체 너비로 설정 */
+/*     width : auto; */
+    height : 2000px;
+    margin: 0 auto; /* 수평 가운데 정렬 */
+    background-color: gray; /* 배경색 지정 */
+}
+
+/* 상단 라인 스타일 */
+.dust-top-line {
+    background-color: green; /* 배너 배경색 지정 */
+    height : 80px;
+    color: #fff; /* 글자색 지정 */
+     /* 내부 여백 지정 */
+}
+#dustTopIcon1 {
+	float : left;
+}
+
+/* 상단 라인 스타일 */
+.dust-high-line {
+	height : 60px;
+	padding: 10px;
+	background-color: orange;
+    /* 필요한 스타일 추가 */
+}
+
+/* 헤더 라인 스타일 */
+.dust-header-line {
+	height : 60px;
+	padding: 10px;
+	background-color: yellow;
+    /* 필요한 스타일 추가 */
+}
+
+/* 중앙 라인 스타일 */
+.dust-center-line {
+	height : 1000px;
+	width : 100%;
+	background-color: purple;
+    /* 내부 여백 지정 */
+}
+
+#dustCenterContentLeft {
+	float: left;
+	height : 700px;
+	width : 700px;
+}
+
+#dustCenterContentRight {
+	float: left;
+	height : 1000px;
+	width : 300px;
+	background-color: blue;
+}
+
+/* 전체 페이지 폰트 스타일 */
+body {
+	background-color: pink;
+    font-family: Arial, sans-serif; /* 폰트 지정 */
+}
