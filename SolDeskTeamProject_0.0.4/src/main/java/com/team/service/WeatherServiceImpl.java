@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.dto.asosdalyinfo.AsosDalyInfo;
 import com.team.dto.livingwthr.LivingWeather;
 import com.team.dto.mediumwthr.temperature.MediumWeather;
 import com.team.mapper.WeatherMapper;
@@ -32,10 +33,12 @@ public class WeatherServiceImpl implements WeatherService {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private final String API_KEY = "6Qg%2BHDGcsOCmPG7E4s4yFIrV2SIqLYL0gh4b7S6AJNTt9a3pkJ5379Lvcn1PmhBrSYZVdIKs6SmGDUSzB3R6Nw%3D%3D";
-	private final String LIVING_WEATHER_URL = "https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/";
-	private final String MEDIUM_WEATHER_URL = "http://apis.data.go.kr/1360000/MidFcstInfoService/";
 	private final String METHOD ="accept";
 	private final String FORM ="application/json";
+	private final String LIVING_WEATHER_URL = "https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/";
+	private final String ASOS_DALY_INFO_URL = "https://apis.data.go.kr/1360000/AsosDalyInfoService/";
+	// 형주
+	private final String MEDIUM_WEATHER_URL = "http://apis.data.go.kr/1360000/MidFcstInfoService/";
 	
 	public String nowTime() {
 		LocalDate today = LocalDate.now();
@@ -43,31 +46,23 @@ public class WeatherServiceImpl implements WeatherService {
         LocalDateTime dateTime = LocalDateTime.of(today, fixedTime);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHH");
         String nowTime = dateTime.format(formatter);
-        System.out.println("나우타임에서...."+nowTime);
     	return nowTime;
 	}
 	
-	public String livingWeatherApi(String area) {
-		String API_URL = 
-				LIVING_WEATHER_URL + "getAirDiffusionIdxV4?serviceKey=" +
-				API_KEY + "&pageNo=10&numOfRows=10&dataType=JSON&areaNo=" +
-				returnLivingAreaNum(area) +"&time="+ nowTime();
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set(METHOD, FORM);
-		// 헤더 끝
-		RestTemplate restTemplate = new RestTemplate();
-		HttpEntity<String> entity = new HttpEntity<>(headers);
-		URI uri = null;
-		try {
-			uri = new URI(API_URL);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+	// 어제 날짜부터 일주일
+	public String oneWeekCalc(int check) {
+        LocalDate today = LocalDate.now();
+        LocalDate oneDayAgo = today.minusDays(1);
+        LocalDate oneWeekAgo = oneDayAgo.minusWeeks(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		if(check == 1) {
+			return oneDayAgo.format(formatter);
+		} else {
+			return oneWeekAgo.format(formatter);
 		}
-		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-		return response.getBody();
 	}
 	
+	// 형주
 	public String MediumTemperaturesApi(String area) {
 		String API_URL = 
 				MEDIUM_WEATHER_URL + "getMidTa?serviceKey=" +
@@ -89,34 +84,107 @@ public class WeatherServiceImpl implements WeatherService {
 		return response.getBody();
 	}
 	
+	public String asosDalyInfoApi(String area) {
+		String API_URI = 
+				ASOS_DALY_INFO_URL + "getWthrDataList?serviceKey=" +
+				API_KEY + "&pageNo=1&numOfRows=10&dataType=json&dataCd=ASOS&dateCd=DAY" +
+				"&startDt=" + oneWeekCalc(0) + "&endDt=" + oneWeekCalc(1) +
+				"&stnIds=" + returnAsosDalyAreaNum(area);
+		System.out.println(API_URI);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set(METHOD, FORM);
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		URI uri = null;
+		try {
+			uri = new URI(API_URI);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		return response.getBody();
+	}
+	
+	public String livingWeatherAirApi(String area) {
+		String API_URI = 
+				LIVING_WEATHER_URL + "getAirDiffusionIdxV4?serviceKey=" +
+				API_KEY + "&pageNo=10&numOfRows=10&dataType=JSON&areaNo=" +
+				returnLivingAreaNum(area) +"&time="+ nowTime();
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set(METHOD, FORM);
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		URI uri = null;
+		try {
+			uri = new URI(API_URI);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		return response.getBody();
+	}
+	
+	public String livingWeatherUVApi(String area) {
+		String API_URI = 
+				LIVING_WEATHER_URL + "getUVIdxV4?serviceKey=" +
+				API_KEY + "&pageNo=10&numOfRows=10&dataType=JSON&areaNo=" +
+				returnLivingAreaNum(area) +"&time="+ nowTime();
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set(METHOD, FORM);
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		URI uri = null;
+		try {
+			uri = new URI(API_URI);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		return response.getBody();
+	}
+	
 	@Override
 	public LivingWeather livingWeatherRun(String area) {
 		LivingWeather response = new LivingWeather();
-		String jsonData = livingWeatherApi(area);
+		String jsonData = livingWeatherAirApi(area);
 		try {
-            // JSON 문자열을 해당 객체로 변환
 			response = objectMapper.readValue(jsonData,LivingWeather.class);
         } catch (Exception e) {
             e.printStackTrace();
-            // 예외 처리 로직 추가
         }
 		return response;
 	}
+	
+	@Override
+	public AsosDalyInfo asosDalyInfoRun(String area) {
+		AsosDalyInfo response = new AsosDalyInfo();
+		String jsonData = asosDalyInfoApi(area);
+		try {
+			response = objectMapper.readValue(jsonData,AsosDalyInfo.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
+	// 형주
 	@Override
 	public MediumWeather mediumWeatherRun(String area) {
 		MediumWeather response = new MediumWeather();
 		String jsonData = MediumTemperaturesApi(area);
 		try {
-			// JSON 문자열을 해당 객체로 변환
 			response = objectMapper.readValue(jsonData,MediumWeather.class);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// 예외 처리 로직 추가
 		}
 		return response;
 	}
-
+	
 	public String returnLivingAreaNum(String area) {
+//		만약 UTF-8 필요하면 사용해서 바꾸면 됩니다.
 //		String characterName = URLEncoder.encode(id, StandardCharsets.UTF_8);
 		if(area.equals("서울")) {
 			area="1100000000";
@@ -192,6 +260,86 @@ public class WeatherServiceImpl implements WeatherService {
 		}
 		return area;
 	} 
+	
+	public String returnAsosDalyAreaNum(String area) {
+//		만약 UTF-8 필요하면 사용해서 바꾸면 됩니다.
+//		String characterName = URLEncoder.encode(id, StandardCharsets.UTF_8);
+		if(area.equals("서울")) {
+			area="108";
+		}
+		else if(area.equals("인천")) {
+			area="112";
+		}
+		else if(area.equals("수원")) {
+			area="119";
+		}
+		else if(area.equals("파주")) {
+			area="99";
+		}
+		else if(area.equals("춘천")) {
+			area="101";
+		}
+		else if(area.equals("원주")) {
+			area="114";
+		}
+		else if(area.equals("강릉")) {
+			area="105";
+		}
+		else if(area.equals("대전")) {
+			area="133";
+		}
+		else if(area.equals("서산")) {
+			area="129";
+		}
+		else if(area.equals("세종")) {
+			area="239";
+		}
+		else if(area.equals("청주")) {
+			area="131";
+		}
+		else if(area.equals("제주")) {
+			area="184";
+		}
+		else if(area.equals("서귀포")) {
+			area="189";
+		}
+		else if(area.equals("광주")) {
+			area="156";
+		}
+		else if(area.equals("목포")) {
+			area="165";
+		}
+		else if(area.equals("여수")) {
+			area="168";
+		}
+		else if(area.equals("전주")) {
+			area="146";
+		}
+		else if(area.equals("군산")) {
+			area="140";
+		}
+		else if(area.equals("부산")) {
+			area="159";
+		}
+		else if(area.equals("울산")) {
+			area="152";
+		}
+		else if(area.equals("경남")) {
+			area="155";
+		}
+		else if(area.equals("대구")) {
+			area="143";
+		}
+		else if(area.equals("안동")) {
+			area="136";
+		}
+		else if(area.equals("포항")) {
+			area="138";
+		}
+		return area;
+	} 
+	
+	// 형주
 	public String returnMediumAreaNum(String area) {
 		if(area.equals("서울")) {
 			area="11B10101";
