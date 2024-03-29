@@ -39,7 +39,7 @@ public class BoardContorller {
 	@GetMapping("/MediumWeather")
 	public void Medium(@RequestParam("area") String area,Model model) {
 		System.out.println("미디움테스트");
-//		model.addAttribute("temper",mediumService.mediumTemperatureRun(area));
-//		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
+		model.addAttribute("temper",mediumService.mediumTemperatureRun(area));
+		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
 	}
 }

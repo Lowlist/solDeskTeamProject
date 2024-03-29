@@ -57,6 +57,7 @@ public class WeatherMediumService {
 			API_KEY + "&numOfRows=10&pageNo=1&regId=" + 
 			mediumWeatherArea(area) + "&tmFc=" + 
 			time.nowTime() + "&dataType=JSON";
+		System.out.println(API_URL);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set(time.METHOD,time.FORM);

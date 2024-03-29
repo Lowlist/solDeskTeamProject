@@ -13,10 +13,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 	${temper.response.body.items.item.get(0).regId} --%>
+	${temper.response.body.items.item.get(0).regId}
 	
-<%-- 	${weather.response.body.items.item.get(0).wf3Am} --%>
-	<i class="wi wi-day-lightning"></i>
+	${weather.response.body.items.item.get(0).wf3Am}
+
     <!-- 중기예보 페이지 큰틀 -->
     <div class="medium-forecast">
 
@@ -57,6 +57,7 @@
         <div class="medium-center-line">
             <div class="medium-left-line">
                 <div class="home-center-left-top-line">
+				<i class="wi wi-night-alt-thunderstorm"></i>
                 </div>
                 <div class="home-center-left-bottom-line">
                 </div>
