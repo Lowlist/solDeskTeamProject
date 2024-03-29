@@ -7,12 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${cp}/resources/MediumFc.css">
+<link rel="stylesheet" href="${cp}/resources/weather-icons-master/css/weather-icons.css">
+<link rel="stylesheet" href="${cp}/resources/weather-icons-master/css/weather-icons.min.css">
+<link rel="stylesheet" href="${cp}/resources/weather-icons-master/css/weather-icons-wind.css">
 <title>Insert title here</title>
 </head>
 <body>
-	${temper.response.body.items.item.get(0).regId}
+<%-- 	${temper.response.body.items.item.get(0).regId} --%>
 	
-	${weather.response.body.items.item.get(0).wf3Am}
+<%-- 	${weather.response.body.items.item.get(0).wf3Am} --%>
+	<i class="wi wi-day-lightning"></i>
     <!-- 중기예보 페이지 큰틀 -->
     <div class="medium-forecast">
 
