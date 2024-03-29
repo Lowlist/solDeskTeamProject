@@ -13,10 +13,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${temper.response.body.items.item.get(0).regId}
+<%-- 	${temper.response.body.items.item.get(0).regId} --%>
+		
 	
-	${weather.response.body.items.item.get(0).wf3Am}
-
+<%-- 	${weather.response.body.items.item.get(0).wf4Am} --%>
+<%-- 	${weather.response.body.items.item.get(0).wf5Am} --%>
     <!-- 중기예보 페이지 큰틀 -->
     <div class="medium-forecast">
 
@@ -56,13 +57,18 @@
         <!-- 중기예보 센터 시작 -->
         <div class="medium-center-line">
             <div class="medium-left-line">
-                <div class="home-center-left-top-line">
-				<i class="wi wi-night-alt-thunderstorm"></i>
-                </div>
+                <div class="item-weather-info" id="wf3" >${weather.response.body.items.item.get(0).wf3Am} <i class="wi wi-day-sunny"></i> </div>
+                <div class="item-weather-info" id="wf4" >${weather.response.body.items.item.get(0).wf4Am} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf5" >${weather.response.body.items.item.get(0).wf5Am} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf6" >${weather.response.body.items.item.get(0).wf6Am} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf7" >${weather.response.body.items.item.get(0).wf7Am} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf8" >${weather.response.body.items.item.get(0).wf8} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf9" >${weather.response.body.items.item.get(0).wf9} <i class="wi wi-cloudy"></i></div>
+                <div class="item-weather-info" id="wf10" >${weather.response.body.items.item.get(0).wf10} <i class="wi wi-day-sunny"></i></div>
                 <div class="home-center-left-bottom-line">
                 </div>
             </div>
-            <div class="home-center-right-line">
+            <div class="medium-center-right-line">
             </div>
         </div>
         <!-- 중기예보 센터 끝 -->
