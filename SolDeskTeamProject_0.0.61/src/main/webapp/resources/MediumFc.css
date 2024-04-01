@@ -1,0 +1,88 @@
+/* 나중에 Line별로 class,id 구성한 뒤 주석달아서 정리해주면 ㄳㄳ */
+.medium-forecast{
+    min-width: 1200px;
+    width: auto;
+    height: 1200px;
+    background-color: aqua;
+}
+
+.medium-forecast-top-line{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: red;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; 
+}
+.medium-top-icon-line{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    background-color: chartreuse;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; 
+}
+
+ .mediumIcons{
+    display: flex;
+    width: 12%;
+    height: 100%;
+    margin: 0 40px;
+    background-color:dodgerblue;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; 
+}
+#goHome{
+    position: relative;
+    right: 40px;
+    width: 240px;
+}
+
+.medium-high-line{
+    display: flex;
+    width: 100%;
+    height: 12%;
+    background-color: blue;
+    justify-content:center; /* 수평 가운데 정렬 */
+    align-items:center; 
+}
+.medium-high-icon-line{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    background-color: lightgoldenrodyellow;
+    justify-content:center;
+    align-items:center;
+}
+/* .main-home-header-line{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    background-color: wheat;
+} */
+.medium-center-line{
+    display: flex;
+    width: 100%;
+    height: 75%;
+    background-color: gray;
+}
+.medium-left-line{
+    display: flex;
+    width: 55%;
+    height: 100%;
+    margin-left: auto;
+    background-color: aqua;
+}
+.home-center-right-line{
+    display: flex;
+    width: 15%;
+    height: 100%;
+    margin-right: auto;
+    background-color: violet;
+}
+.medium-bottom-line{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    background-color: green;
+}

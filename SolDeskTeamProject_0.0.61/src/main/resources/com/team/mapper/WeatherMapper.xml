@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapper.WeatherMapper">
+
+<insert id="insertSqlData" parameterType="com.team.dto.sql.SqlData">
+	insert into ${tableName} (standard_name,json_data)values(#{standardName},#{jsonData})
+</insert>
+
+<select id="getCountSqlData" resultType="int" parameterType="com.team.dto.sql.SqlData">
+	select count(*) from ${tableName} where standard_name=#{standardName} and date like CONCAT('%', #{nowDate}, '%')
+</select>
+
+<select id="selectJsonData" resultType="String" parameterType="com.team.dto.sql.SqlData">
+	select json_data from ${tableName} where standard_name=#{standardName} and date like CONCAT('%', #{nowDate}, '%')
+</select>
+
+</mapper>
