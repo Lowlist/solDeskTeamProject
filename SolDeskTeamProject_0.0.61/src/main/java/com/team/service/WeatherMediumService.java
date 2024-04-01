@@ -60,6 +60,7 @@ public class WeatherMediumService {
 			API_KEY + "&numOfRows=10&pageNo=1&regId=" + 
 			mediumWeatherArea(area) + "&tmFc=" + 
 			work.nowTime() + "&dataType=JSON";
+		System.out.println(API_URL);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set(work.METHOD,work.FORM);
@@ -80,6 +81,7 @@ public class WeatherMediumService {
 	public MediumTemperature mediumTemperatureJson(SqlData data) {
 		MediumTemperature response = new MediumTemperature();
 		String jsonData = mapper.selectJsonData(data);
+		System.out.println(jsonData);
 		try {
 			response = work.objectMapper.readValue(jsonData, MediumTemperature.class);
 		} catch (Exception e) {
@@ -92,6 +94,7 @@ public class WeatherMediumService {
 	public MediumWeather mediumWeatherJson(SqlData data) {
 		MediumWeather response = new MediumWeather();
 		String jsonData = mapper.selectJsonData(data);
+		System.out.println(jsonData);
 		try {
 			response = work.objectMapper.readValue(jsonData, MediumWeather.class);
 		} catch (Exception e) {
@@ -104,11 +107,11 @@ public class WeatherMediumService {
 	public MediumTemperature mediumTempRun(String area) {
 		SqlData in = new SqlData();
 		in.setTableName("medium_table");
-		in.setStandardName("temperature");
+		in.setStandardName("temperature"+area);
 		in.setNowDate(work.nowDate());
 		if (work.SqlCheckData(in)) {
 			mediumTemperaturesApi(area,in);
-			System.out.println("API 들렸음");
+			System.out.println("api로데이터불러왔음");
 		}
 		return mediumTemperatureJson(in);
 	}
@@ -117,11 +120,11 @@ public class WeatherMediumService {
 	public MediumWeather mediumWeatherRun(String area) {
 		SqlData in = new SqlData();
 		in.setTableName("medium_table");
-		in.setStandardName("weather");
+		in.setStandardName("weather"+area);
 		in.setNowDate(work.nowDate());
 		if (work.SqlCheckData(in)) {
 			mediumWeatherApi(area, in);
-			System.out.println("API 들렸음");
+			System.out.println("api로데이터불러왔음");
 		}
 		return mediumWeatherJson(in);
 	}

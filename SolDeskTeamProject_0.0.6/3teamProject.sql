@@ -5,6 +5,7 @@ insert into asos_table (standard_name,json_data) values ('asos','asdads');
 
 select *from asos_table;
 select *from living_table;
+select *from medium_table;
 select Count(*) from asos_table where standard_name='asos' and date like '%2024-03-29%';
 drop table asos_table;
 drop table living_table;
