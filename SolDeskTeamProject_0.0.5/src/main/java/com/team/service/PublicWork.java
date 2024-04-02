@@ -42,16 +42,5 @@ public class PublicWork {
 			// 매개변수가 1이 아닐경우엔 어제날짜 기준으로 일주일 전 반환
 			return oneWeekAgo.format(formatter);
 		}
-		
 	}
-	
-	// 공용함수(오늘) sql 참조 and dust용 ex)2024-03-28
-	public String nowDate() {
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String nowDate = today.format(formatter);
-        return nowDate;
-	}
-	
-	
 }

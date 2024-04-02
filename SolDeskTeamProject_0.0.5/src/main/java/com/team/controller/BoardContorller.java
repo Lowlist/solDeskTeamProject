@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team.service.WeatherAsosService;
-import com.team.service.WeatherDustService;
 import com.team.service.WeatherLivingService;
 import com.team.service.WeatherMediumService;
 
@@ -25,7 +24,6 @@ public class BoardContorller {
 	private WeatherMediumService mediumService;
 	private WeatherLivingService livingService;
 	private WeatherAsosService asosService;
-	private WeatherDustService dustService;
 	
 	//메인 컨트롤러
 	@GetMapping("/Main")
@@ -44,12 +42,4 @@ public class BoardContorller {
 		model.addAttribute("temper",mediumService.mediumTemperatureRun(area));
 		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
 	}
-	
-	//미세먼지 컨트롤러
-	@GetMapping("/Dust")
-    public void Dust(Model model) {
-	    System.out.println("미세먼지테스트");
-	    model.addAttribute("dust",dustService.weatherDustRun());
-	}
-	
 }

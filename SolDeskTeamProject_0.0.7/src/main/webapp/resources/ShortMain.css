@@ -1,0 +1,110 @@
+@charset "EUC-KR";
+
+.whole {
+	min-width: 1200px;
+	width: auto;
+	height: 1200px;
+}
+
+.top-of-top {
+	width: 100%;
+	height: 3%;
+}
+
+.top {
+	width: 100%;
+	height: 5%;
+}
+
+.whole-mid {
+	display: flex;
+	witdth: 100%;
+	height: 80%;
+	justify-content: center;
+	align-items: center;
+}
+
+.mid {
+	display: flex;
+	width: 80%;
+	height: 100%;
+}
+
+.mid-left {
+	width: 100%;
+	height: 100%;
+}
+
+.mid-right {
+	display: flex;
+	width: 40%;
+	height: 50=%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.mid-right-1 {
+	width: 100%;
+	height: 50%;
+}
+
+.mid-right-2 {
+	width: 100%;
+	height: 50%;
+}
+.mid-header {
+	display :flex;
+	width: 100%;
+	height : 6%;
+	
+}
+.mid-header-button {
+	width: 10%;
+	height : 6%;
+}
+.mid-header-list {
+	display :flex;
+	width: 50%;
+	height : 6%;
+}
+
+.bt {
+	border : 1px solid ;
+	border-color : gray;
+	margin: 10%;
+    text-align: center;
+	border-radius: 20px;
+	background-color : white;
+	color : black;
+}
+.bt1{
+	
+	border : 1px solid;
+	border-color : gray;
+	margin: 10% 10% 0% 30%;
+    text-align: center;
+	border-radius: 20px;
+	background-color : white;
+	color : black;
+}
+.mid-location-info-area{
+	display:flex;
+	position : relative;
+}
+.location-search{
+	postion: absolute;
+	left : 50%;
+}
+.location-button{
+	position: absolute;
+	right :10%;
+}
+
+
+
+
+.bottom {
+	width: 10vw;
+	height: 10vh;
+}
