@@ -41,5 +41,7 @@ public class BoardContorller {
 		System.out.println("미디움테스트");
 		model.addAttribute("temper",mediumService.mediumTempRun(area));
 		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
+		model.addAttribute("MediumData",mediumService.getDates());
+		model.addAttribute("Area",area);
 	}
 }

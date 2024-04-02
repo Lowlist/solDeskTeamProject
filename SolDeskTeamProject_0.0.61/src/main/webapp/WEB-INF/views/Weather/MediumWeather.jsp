@@ -28,23 +28,8 @@
 		<!-- 중기예보 페이지 탑 -->
 		<div class="medium-forecast-top-line">
 			<div class="medium-top-icon-line">
-				<div class="mediumIcons" id="goHome">
-					<h1>메인페이지</h1>
-				</div>
 				<div class="mediumIcons">
-					<h2>페이지1</h2>
-				</div>
-				<div class="mediumIcons">
-					<h2>페이지2</h2>
-				</div>
-				<div class="mediumIcons">
-					<h2>페이지3</h2>
-				</div>
-				<div class="mediumIcons">
-					<h2>페이지4</h2>
-				</div>
-				<div class="mediumIcons">
-					<h2>페이지5</h2>
+					<a href="${cp}/Weather/Main?area=서울"><img alt="메인로고"src="${cp}/resources/main_logo.png"></a>
 				</div>
 			</div>
 		</div>
@@ -71,7 +56,10 @@
 		<!-- 중기예보 센터 시작 -->
 		<div class="medium-center-line">
 			<div class="medium-left-line">
+				<div id="area-name"><h3>${Area} 중기기상예보</h3></div>
 				<div class="item-weather-info" id="wf3">
+					<div>${MediumData.get(0).date}</div>
+					<div>${MediumData.get(0).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf3Am}</div>
 					<c:choose>
 						<c:when
@@ -121,9 +109,11 @@
 					</c:choose>
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt3Am}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt3Am}%</div>
 				</div>
 				<div class="item-weather-info" id="wf4">
+					<div>${MediumData.get(1).date}</div>
+					<div>${MediumData.get(1).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf4Am}</div>
 					<c:choose>
 						<c:when
@@ -173,10 +163,11 @@
 					</c:choose>
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin4}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax4}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt4Am}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt4Am}%</div>
 				</div>
 				<div class="item-weather-info" id="wf5">
-
+					<div>${MediumData.get(2).date}</div>
+					<div>${MediumData.get(2).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf5Am}</div>
 					<c:choose>
 						<c:when
@@ -227,9 +218,11 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin5}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax5}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt5Am}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt5Am}%</div>
 				</div>
 				<div class="item-weather-info" id="wf6">
+					<div>${MediumData.get(3).date}</div>
+					<div>${MediumData.get(3).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf6Am}</div>
 					<c:choose>
 						<c:when
@@ -280,9 +273,11 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin6}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax6}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt6Am}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt6Am}%</div>
 				</div>
 				<div class="item-weather-info" id="wf7">
+					<div>${MediumData.get(4).date}</div>
+					<div>${MediumData.get(4).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf7Am}</div>
 					<c:choose>
 						<c:when
@@ -333,9 +328,11 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin7}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax7}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt7Am}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt7Am}%</div>
 				</div>
 				<div class="item-weather-info" id="wf8">
+					<div>${MediumData.get(5).date}</div>
+					<div>${MediumData.get(5).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf8}</div>
 					<c:choose>
 						<c:when
@@ -386,9 +383,11 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin8}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax8}</div>
-					<div>강수확률:${weather.response.body.items.item.get(0).rnSt8}%</div>
+					<div><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt8}%</div>
 				</div>
 				<div class="item-weather-info" id="wf9">
+					<div>${MediumData.get(6).date}</div>
+					<div>${MediumData.get(6).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf9}</div>
 					<c:choose>
 						<c:when
@@ -439,9 +438,11 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin9}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax9}</div>
-					<div class="rain">강수확률:${weather.response.body.items.item.get(0).rnSt9}%</div>
+					<div class="rain" ><i class="wi wi-raindrop" id="rain-rate"></i>${weather.response.body.items.item.get(0).rnSt9}%</div>
 				</div>
 				<div class="item-weather-info" id="wf10">
+					<div>${MediumData.get(7).date}</div>
+					<div>${MediumData.get(7).dayOfWeek}요일</div>
 					<div>${weather.response.body.items.item.get(0).wf10}</div>
 					<c:choose>
 						<c:when
@@ -492,7 +493,7 @@
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin10}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax10}</div>
-					<div class="rain">강수확률:${weather.response.body.items.item.get(0).rnSt10}%</div>
+					<div class="rain"><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt10}%</div>
 				</div>
 			</div>
 				<div class="home-center-left-bottom-line"></div>
