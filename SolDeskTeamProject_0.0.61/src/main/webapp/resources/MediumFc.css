@@ -8,6 +8,7 @@ body {
 	/*     color: #fff */
 }
 .testtest i {
+	
 	font-size: 24px; /* 크기 조절 */
 	color: red; /* 색상 변경 */
 }
@@ -15,7 +16,7 @@ body {
 .medium-forecast {
 	min-width: 1200px;
 	width: auto;
-	height: 1400px;
+	height: 2000px;
 /* 	background-color: aqua; */
 }
 
@@ -128,13 +129,13 @@ body {
 
 .item-weather-info i{
 	font-size: 50px;
-	margin-top: 37px;
+	margin-top: 60px;
 	margin-right: 100px;
 	color: skyblue;
 }
 #rain-rate{
 	margin-right:10px;
-	margin-bottom: 35px;
+	margin-bottom: 45px;
 }
 .item-weather-info div{
 	display: flex;
@@ -144,8 +145,7 @@ body {
 	justify-content: center; 
 	align-items: center; 
 }
-.rain{
-}
+
 .medium-bottom-line {
 	display: flex;
 	width: 100%;
