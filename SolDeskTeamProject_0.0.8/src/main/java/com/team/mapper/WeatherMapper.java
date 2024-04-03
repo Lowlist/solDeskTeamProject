@@ -27,4 +27,5 @@ public interface WeatherMapper {
 
 	public List<Item> nowWeatherList(Map<String, Object> map);
 	
+	
 }
