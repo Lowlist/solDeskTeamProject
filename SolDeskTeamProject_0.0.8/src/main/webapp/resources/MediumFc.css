@@ -1,11 +1,12 @@
 /* 나중에 Line별로 class,id 구성한 뒤 주석달아서 정리해주면 ㄳㄳ */
 body {
-    background-image: url("img/medium_background.png"); /* 배경 이미지 경로 */
+	background-image: url("img/medium_background.png"); /* 배경 이미지 경로 */
 	padding: 20px; /* 페이지 여백 설정 */
 	background-size: cover;
 	background-position: 50% 20%;
 	/*     color: #fff */
 }
+
 .testtest i {
 	font-size: 24px; /* 크기 조절 */
 	color: red; /* 색상 변경 */
@@ -14,15 +15,15 @@ body {
 .medium-forecast {
 	min-width: 1200px;
 	width: auto;
-	height: 1400px;
-/* 	background-color: aqua; */
+	height: 1600px;
+	/* 	background-color: aqua; */
 }
 
 .medium-forecast-top-line {
 	display: flex;
 	width: 100%;
 	height: 10%;
-/* 	background-color: red; */
+	/* 	background-color: red; */
 	justify-content: center; /* 수평 가운데 정렬 */
 	align-items: center;
 }
@@ -31,7 +32,7 @@ body {
 	display: flex;
 	width: 70%;
 	height: 100%;
-/* 	background-color: chartreuse; */
+	/* 	background-color: chartreuse; */
 	justify-content: center; /* 수평 가운데 정렬 */
 	align-items: center;
 }
@@ -40,16 +41,15 @@ body {
 	display: flex;
 	width: 12%;
 	height: 100%;
-	margin-top: 40px;
-	margin-bottom: 40px;
 	justify-content: center; /* 수평 가운데 정렬 */
 	align-items: center;
 }
-.mediumIcons img{
+
+.mediumIcons img {
 	width: 350px; /* 이미지 너비를 100px로 지정 */
-    height: auto; /* 이미지 높이를 자동으로 설정하여 비율 유지 */
-    margin-bottom: 40px;
-   	 filter: brightness(200%); /* 이미지의 밝기를 200%로 증가시켜서 흰색으로 만듭니다. */
+	height: auto; /* 이미지 높이를 자동으로 설정하여 비율 유지 */
+	margin-bottom: 40px;
+	filter: brightness(200%); /* 이미지의 밝기를 200%로 증가시켜서 흰색으로 만듭니다. */
 }
 
 #goHome {
@@ -62,7 +62,7 @@ body {
 	display: flex;
 	width: 100%;
 	height: 12%;
-/* 	background-color: blue; */
+	/* 	background-color: blue; */
 	justify-content: center; /* 수평 가운데 정렬 */
 	align-items: center;
 }
@@ -71,10 +71,27 @@ body {
 	display: flex;
 	width: 70%;
 	height: 100%;
-	background-color: lightgoldenrodyellow;
-	justify-content: center;
+/* 	background-color: lightgoldenrodyellow; */
+}
+
+.goMain {
+	display: flex;
+	width: 20%;
+	height: 100%;
+	justify-content: center; /* 수평 가운데 정렬 */
 	align-items: center;
 }
+.goMain h1{
+	color:white;
+	
+}
+ .goMain h1 a {
+        color: inherit; /* 부모 요소의 색상을 상속 */
+        text-decoration: none; /* 밑줄 제거 */
+ }
+
+
+
 /* .main-home-header-line{
     display: flex;
     width: 100%;
@@ -85,33 +102,52 @@ body {
 	display: flex;
 	width: 100%;
 	height: 75%;
-/* 	background-color: gray; */
+	opacity: 88%;
+	/* 	background-color: gray; */
 }
 
 .medium-left-line {
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	width: 55%;
 	height: 100%;
 	margin-left: auto;
 	background-color: aqua;
 }
+
 .medium-left-line #area-name {
-    display: flex;
-    width: 100%;
-    height: 10%;
-    background-color: white;
-    border-bottom: 2px solid black; 
-    justify-content: center; 
-	align-items: center; 
+	display: flex;
+	width: 100%;
+	height: 20%;
+	background-color: white;
+	border-bottom: 2px solid black;
+	justify-content: center;
+	align-items: center;
 }
 
 .medium-center-right-line {
 	display: flex;
+	flex-direction: column;
 	width: 15%;
 	height: 100%;
 	margin-right: auto;
 	background-color: violet;
+}
+.medium-center-right-top {
+	display:flex;
+	width:100%;
+	height:50%;
+	background-color:white;
+	border-bottom: 2px solid black;
+	border-left: 2px solid black;
+}
+.medium-center-right-bottom {
+	display:flex;
+	width:100%;
+	height:50%;
+	background-color:white;
+	border-bottom: 2px solid black;
+	border-left: 2px solid black;
 	
 }
 
@@ -121,33 +157,38 @@ body {
 	height: 20%;
 	background-color: white;
 	margin-right: auto;
-	border-bottom: 2px solid black; 
+	border-bottom: 2px solid black;
 	font-size: 20px; /* 폰트 크기 변경 */
 }
 
-.item-weather-info i{
+.item-weather-info i {
 	font-size: 50px;
 	margin-top: 60px;
 	margin-right: 100px;
 	color: skyblue;
 }
-#rain-rate{
+
+#rain-rate {
 	margin-right: 10px;
 	margin-bottom: 45px;
 }
-.item-weather-info div{
+
+.item-weather-info div {
 	display: flex;
 	width: 15%;
 	height: 100%;
-	display: flex; 
-	justify-content: center; 
-	align-items: center; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.rain{
+
+.rain {
+	
 }
+
 .medium-bottom-line {
 	display: flex;
 	width: 100%;
 	height: 5%;
-/* 	background-color: green; */
+	/* 	background-color: green; */
 }

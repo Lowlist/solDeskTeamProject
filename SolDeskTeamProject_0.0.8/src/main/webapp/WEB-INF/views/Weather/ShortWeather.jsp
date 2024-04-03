@@ -18,7 +18,6 @@
 	rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</script>
 </head>
 <body>
 	<div class=whole>
@@ -31,7 +30,7 @@
 						<div class=main-header-button>
 							<button type="button" class="bt dropdown-toggle"
 								data-bs-toggle="dropdown">
-								<img src="${cp}/resources/naver.png" alt="button-img"
+								<img src="${cp}/resources/img/naver.png" alt="button-img"
 									style="width: 20px; height: 20px;" /> <span
 									style="font-style: italic;">네이버</span>
 							</button>
@@ -41,7 +40,7 @@
 						</div>
 						<div class=main-header-list>
 							<button type="button" class="bt1 dropdown-toggle">
-								<img src="${cp}/resources/star.png" alt="button-img"
+								<img src="${cp}/resources/img/star.png" alt="button-img"
 									style="width: 20px; height: 20px;" /> <span
 									style="font-style: italic;">관심구역</span>
 							</button>

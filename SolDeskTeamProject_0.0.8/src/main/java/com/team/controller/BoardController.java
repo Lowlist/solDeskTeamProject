@@ -1,5 +1,8 @@
 package com.team.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import com.team.service.AsosService;
 import com.team.service.DustService;
 import com.team.service.LivingService;
 import com.team.service.MediumService;
+import com.team.service.PublicWork;
 import com.team.service.ShortService;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +32,8 @@ public class BoardController {
 	private AsosService asosService;
 	private ShortService shortService;
 	private DustService dustService;
+	//0.0.8에서 컨트롤러에 날짜 실으려고 만듬
+	private PublicWork publicWork;
 	
 	//메인 컨트롤러
 	@GetMapping("/Main")
@@ -36,7 +42,6 @@ public class BoardController {
 		System.out.println("컨트롤러테스트");
 		model.addAttribute("air",livingService.livingAirRun(area));
 		model.addAttribute("uv",livingService.livingUVRun(area));
-		model.addAttribute("asos",asosService.asosRun(area));
 	}
 	
 	//중기 컨트롤러
@@ -60,5 +65,14 @@ public class BoardController {
     public void Dust(Model model) {
         System.out.println("미세먼지테스트");
         model.addAttribute("dust",dustService.weatherDustRun());
+    }
+    @GetMapping("/PastWeather")
+    public void PastWeather(@RequestParam("area") String area,@RequestParam(value="date",defaultValue = "") String date,Model model) {
+    	 if (date.isEmpty()) {
+    	     date = publicWork.nowDate2();
+    	 }
+    	System.out.println("과거페이지테스트");
+    	model.addAttribute("asos",asosService.asosRun(area,date));
+    	model.addAttribute("date",publicWork.nowDate());
     }
 }

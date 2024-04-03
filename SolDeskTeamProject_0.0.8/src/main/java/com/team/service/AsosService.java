@@ -28,12 +28,12 @@ public class AsosService {
 	private final String ASOS_DALY_INFO_URL = "https://apis.data.go.kr/1360000/AsosDalyInfoService/";
 	
 	// asos종관 기상정보 api
-	public void asosDalyInfoApi(String area,SqlData sql) {
+	public void asosDalyInfoApi(String area,SqlData sql,String date) {
 		String API_URI = 
 			ASOS_DALY_INFO_URL + "getWthrDataList?serviceKey=" +
 			API_KEY + "&pageNo=1&numOfRows=10&dataType=json&dataCd=ASOS&dateCd=DAY" +
-			"&startDt=" + work.oneWeekCalc(0) + 
-			"&endDt=" + work.oneWeekCalc(1) +
+			"&startDt=" + date + 
+			"&endDt=" + date +
 			"&stnIds=" + asosDalyArea(area);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -64,13 +64,13 @@ public class AsosService {
 	}
 	
 	// 컨트롤러에서 직접적으로 실행로직
-	public AsosDalyInfo asosRun(String area) {
+	public AsosDalyInfo asosRun(String area,String date) {
 		SqlData in = new SqlData();
 		in.setTableName("asos_table");
 		in.setStandardName("asos"+area);
 		in.setNowDate(work.nowDate());
 		if (work.SqlCheckData(in)) {
-			asosDalyInfoApi(area,in);
+			asosDalyInfoApi(area,in,date);
 			System.out.println("API 들렸음");
 		} 
 		return asosJson(in);

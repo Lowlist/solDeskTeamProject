@@ -65,6 +65,13 @@ public class PublicWork {
 	    String nowTime = today.format(formatter);
 	   	return nowTime;
 	}
+	//pastweather에 String date에 기본 value값으로 보낼거임
+	public String nowDate2() {
+		LocalDate today = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		String nowTime = today.format(formatter);
+		return nowTime;
+	}
 	
 	public String nowTimes() {
 	    LocalTime now = LocalTime.now();

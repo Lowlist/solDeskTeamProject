@@ -29,7 +29,8 @@
 		<div class="medium-forecast-top-line">
 			<div class="medium-top-icon-line">
 				<div class="mediumIcons">
-					<a href="${cp}/Weather/Main?area=서울"><img alt="메인로고"src="${cp}/resources/img/main_logo.png"></a>
+					<a hre	f="${cp}/Weather/Main?area=서울">
+					<img alt="메인로고"src="${cp}/resources/img/main_logo.png"></a>
 				</div>
 			</div>
 		</div>
@@ -38,11 +39,30 @@
 		<!-- 중기예보 하이 페이지 시작 -->
 		<div class="medium-high-line">
 			<div class="medium-high-icon-line">
-				<h1>대충 사이트내 기능들</h1>
+				<div class="goMain">
+
+				<h1><a href="${cp}/Weather/Main?area=서울">메인 홈</a></h1>
+				</div>
+				<div class="goMain">
+
+				<h1><a href="${cp}/Weather/ShortWeather?area=서울">단기기상정보</a></h1>
+				</div>
+				<div class="goMain">
+
+				<h1><a href="${cp}/Weather/DustWeather">전국미세먼지</a></h1>
+				</div>
+				<div class="goMain">
+
+				<h1><a href="${cp}/Weather/PastWeather?area=서울">과거날씨정보</a></h1>
+				</div>
+				<div class="goMain">
+
+				<h1><a href="${cp}/Weather/Main?area=서울">생활기상지수</a></h1>
+				</div>
 			</div>
-			<div class="home-high-serach-line">
-				<div class="home-high-left-serach-line"></div>
-				<div class="home-high-right-serach-line"></div>
+			<div class="medium-high-serach-line">
+				<div class="medium-high-left-serach-line"></div>
+				<div class="medium-high-right-serach-line"></div>
 			</div>
 		</div>
 		<!-- 중기예보 하이 페이지 끝 -->
@@ -56,7 +76,7 @@
 		<!-- 중기예보 센터 시작 -->
 		<div class="medium-center-line">
 			<div class="medium-left-line">
-				<div id="area-name"><h3>${Area} 중기기상예보</h3></div>
+				<div id="area-name"><h1>${Area} 중기기상예보</h1></div>
 				<div class="item-weather-info" id="wf3">
 					<div>${MediumData.get(0).date}</div>
 					<div>${MediumData.get(0).dayOfWeek}요일</div>
@@ -496,8 +516,10 @@
 					<div class="rain"><i class="wi wi-raindrop" id="rain-rate"></i> ${weather.response.body.items.item.get(0).rnSt10}%</div>
 				</div>
 			</div>
-				<div class="home-center-left-bottom-line"></div>
-			<div class="medium-center-right-line"></div>
+			<div class="medium-center-right-line">
+			<div class="medium-center-right-top"></div>
+			<div class="medium-center-right-bottom"></div>
+			</div>
 		</div>
 		<!-- 중기예보 센터 끝 -->
 

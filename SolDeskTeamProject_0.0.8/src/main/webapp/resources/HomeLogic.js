@@ -29,7 +29,7 @@ $(document).ready(function(){
             window.location.href = 'https://www.google.com/';
         //과거날씨정보(ASOS)
         }else if(headerId=="homeHeaderMenu4"){
-            window.location.href = 'https://www.accuweather.com/';
+            window.location.href = 'PastWeather?area=서울&date=20240402';
         }
     });
 });

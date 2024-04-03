@@ -51,7 +51,6 @@ public class MediumService {
 	        // MediumDate 객체를 생성하고 날짜와 요일 설정
 	        MediumDate DateData = new MediumDate();
 	        DateData.setDate(dateStr);
-	        System.out.println(dateStr);
 	        DateData.setDayOfWeek(dayOfWeekStr);
 	        
 	        // ArrayList에 추가
