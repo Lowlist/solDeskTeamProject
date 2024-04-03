@@ -140,6 +140,12 @@ body {
 	background-color:white;
 	border-bottom: 2px solid black;
 	border-left: 2px solid black;
+	justify-content: center;
+	align-items: center;
+}
+.medium-center-right-top img{
+	width: 300px;
+	height: auto;
 }
 .medium-center-right-bottom {
 	display:flex;
@@ -148,9 +154,14 @@ body {
 	background-color:white;
 	border-bottom: 2px solid black;
 	border-left: 2px solid black;
+	justify-content: center;
+	align-items: center;
 	
 }
-
+.medium-center-right-bottom img{
+	width: 300px;
+	height: auto;
+}
 .item-weather-info {
 	display: flex;
 	width: 100%;
