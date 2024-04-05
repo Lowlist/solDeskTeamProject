@@ -591,7 +591,7 @@
 						<h3>${forecast.response.body.items.item.get(0).wfSv}</h3>
 					</div>
 					<select id="areaSelect">
-						<option value="">------</option>
+						<option value="">-----지역선택-----</option>
 						<option value="서울">서울</option>
 						<option value="인천">인천</option>
 						<option value="대전">대전</option>
