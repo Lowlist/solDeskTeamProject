@@ -77,7 +77,7 @@ $(document).ready(function(){
         let headerId = $(this).attr('id');
         //중기기상정보
         if(headerId=="homeHeaderMenu0"){
-            window.location.href = 'Weather/MediumWeather?area=서울';
+            window.location.href = 'Weather/MediumWeather';
         //단기기상정보
         }else if(headerId=="homeHeaderMenu1"){
             window.location.href = 'Weather/ShortWeather';
@@ -91,7 +91,7 @@ $(document).ready(function(){
         }else if(headerId=="homeHeaderMenu4"){
             window.location.href = 'Weather/PastWeather?area=서울';
         }
-    });
+    });	
 
     $("#mapBtn0").css('background-color', 'blue');
     $("#mapBtn0").css('color', 'white');

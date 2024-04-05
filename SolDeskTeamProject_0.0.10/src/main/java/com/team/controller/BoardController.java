@@ -53,10 +53,14 @@ public class BoardController {
 	
 	//중기 컨트롤러
 	@GetMapping("/MediumWeather")
-	public void Medium(@RequestParam(value = "area", defaultValue = "서울") String area,Model model) {
+	public void Medium(@RequestParam(value = "area", defaultValue = "") String area,Model model) {
+   	 if (area.isEmpty()) {
+	     area = "서울";
+	 }
 		System.out.println("미디움테스트");
 		model.addAttribute("temper",mediumService.mediumTempRun(area));
 		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
+		model.addAttribute("forecast",mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData",mediumService.getDates());
 		model.addAttribute("Area",area);
 	}

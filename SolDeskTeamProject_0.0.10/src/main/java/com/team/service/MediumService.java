@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.team.dto.mediumwthr.date.MediumDate;
+import com.team.dto.mediumwthr.forecast.MediumForecast;
 import com.team.dto.mediumwthr.temperature.MediumTemperature;
 import com.team.dto.mediumwthr.weather.MediumWeather;
 import com.team.dto.sql.SqlData;
@@ -111,6 +112,30 @@ public class MediumService {
 		sql.setJsonData(response.getBody());
 		mapper.insertSqlData(sql);
 	}
+	//형주 중기기상전망 api로직
+	public void mediumWeatherInfo(String area,SqlData sql) {
+		System.out.println("로직에 들어옴");
+		String API_URL =
+				MEDIUM_WEATHER_URL + "getMidFcst?serviceKey=" + 
+						API_KEY + "&numOfRows=10&pageNo=1&stnId=" + 
+						mediumWeatherArea2(area) + "&tmFc=" + 
+						work.nowTime() + "&dataType=JSON";
+		System.out.println(API_URL);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set(work.METHOD,work.FORM);
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		URI uri = null;
+		try {
+			uri = new URI(API_URL);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		sql.setJsonData(response.getBody());
+		mapper.insertSqlData(sql);
+	}
 	
 	// 오브젝트 맵퍼 json 정렬화 후 반환문
 	public MediumTemperature mediumTemperatureJson(SqlData data) {
@@ -137,8 +162,20 @@ public class MediumService {
 		}
 		return response;
 	}
+	// 오브젝트 맵퍼 json 정렬화 후 반환문
+	public MediumForecast mediumForecastJson(SqlData data) {
+		MediumForecast response = new MediumForecast();
+		String jsonData = mapper.selectJsonData(data);
+		System.out.println(jsonData);
+		try {
+			response = work.objectMapper.readValue(jsonData, MediumForecast.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
 
-	// 컨트롤러에서 직접적으로 실행로직 (대기질)
+	// 컨트롤러에서 직접적으로 실행로직 (중기온도)
 	public MediumTemperature mediumTempRun(String area) {
 		SqlData in = new SqlData();
 		in.setTableName("medium_table");
@@ -151,7 +188,7 @@ public class MediumService {
 		return mediumTemperatureJson(in);
 	}
 	
-	// 컨트롤러에서 직접적으로 실행로직 (대기질)
+	// 컨트롤러에서 직접적으로 실행로직 (중기날씨)
 	public MediumWeather mediumWeatherRun(String area) {
 		SqlData in = new SqlData();
 		in.setTableName("medium_table");
@@ -162,6 +199,19 @@ public class MediumService {
 			System.out.println("api로데이터불러왔음");
 		}
 		return mediumWeatherJson(in);
+	}
+	
+	// 컨트롤러에서 직접적으로 실행로직 (중기기상전망)
+	public MediumForecast mediumForecastRun(String area) {
+		SqlData in = new SqlData();
+		in.setTableName("medium_table");
+		in.setStandardName("Forecast"+area);
+		in.setNowDate(work.nowDate());
+		if (work.SqlCheckData(in)) {
+			mediumWeatherInfo(area, in);
+			System.out.println("api로데이터불러왔음");
+		}
+		return mediumForecastJson(in);
 	}
 	
 	// 파라미터 값 변환 로직
@@ -243,6 +293,35 @@ public class MediumService {
 	
 	// 파라미터 값 변환 로직(날씨)
 	public String mediumWeatherArea(String area) {
+		//지역변환
+		if(area.equals("수원") || area.equals("파주")) {
+			area="경기도";
+		}
+		else if(area.equals("춘천") || area.equals("원주")) {
+			area="강원도영서";
+		}
+		else if(area.equals("강릉")) {
+			area="강원도영동";
+		}
+		else if(area.equals("서산")) {
+			area="충청남도";
+		}
+		else if(area.equals("청주")) {
+			area="충청북도";
+		}
+		else if(area.equals("여수")) {
+			area="전라남도";
+		}
+		else if(area.equals("전주")) {
+			area="전라북도";
+		}
+		else if(area.equals("안동") || area.equals("포항")) {
+			area="경상북도";
+		}
+		else if(area.equals("창원")) {
+			area="경상남도";
+		}
+		//지역코드변환
 		if(area.equals("서울") || area.equals("인천") || area.equals("경기도")) {
 			area="11B00000";
 		}
@@ -272,6 +351,69 @@ public class MediumService {
 		}
 		else if(area.equals("제주도")) {
 			area="11G00000";
+		}
+		return area;
+	}
+	// 파라미터 값 변환 로직(중기기상전망)
+	public String mediumWeatherArea2(String area) {
+		//지역변환
+		if(area.equals("수원") || area.equals("파주")) {
+			area="경기도";
+		}
+		else if(area.equals("춘천") || area.equals("원주")) {
+			area="강원도영서";
+		}
+		else if(area.equals("강릉")) {
+			area="강원도영동";
+		}
+		else if(area.equals("서산")) {
+			area="충청남도";
+		}
+		else if(area.equals("청주")) {
+			area="충청북도";
+		}
+		else if(area.equals("여수")) {
+			area="전라남도";
+		}
+		else if(area.equals("전주")) {
+			area="전라북도";
+		}
+		else if(area.equals("안동") || area.equals("포항")) {
+			area="경상북도";
+		}
+		else if(area.equals("창원")) {
+			area="경상남도";
+		}
+		//지역코드변환
+		if(area.equals("서울") || area.equals("인천") || area.equals("경기도")) {
+			area="109";
+		}
+		else if(area.equals("강원도영서")) {
+			area="105";
+		}
+		else if(area.equals("강원도영동")) {
+			area="105";
+		}
+		else if(area.equals("대전") || area.equals("세종") || area.equals("충청남도")) {
+			area="133";
+		}
+		else if(area.equals("충청북도")) {
+			area="131";
+		}
+		else if(area.equals("광주") || area.equals("전라남도")) {
+			area="156";
+		}
+		else if(area.equals("전라북도")) {
+			area="146";
+		}
+		else if(area.equals("대구") || area.equals("경상북도")) {
+			area="143";
+		}
+		else if(area.equals("부산") || area.equals("울산") || area.equals("경상남도")) {
+			area="159";
+		}
+		else if(area.equals("제주도")) {
+			area="184";
 		}
 		return area;
 	} 
