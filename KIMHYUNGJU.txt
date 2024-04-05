@@ -34,3 +34,8 @@
 
 	jsp에서 modelattribute로 key값을 부를때 변수값을 착각했다. 다음에는 service에서 내가 설정한 변수값이 아니라 진짜 그 클래스에
 	있는 변수값을 넣어주는걸 잊으면 안될것같다.
+
+	(2024-04-03)의 에러
+	
+	css에서 div안에 두개의 div가 들어가있을경우, flex-direction: column;을 넣어줘야
+	각각 div에 flex를 주고 width:100%를 줬을때 div밑에 div가 들어간다.  
