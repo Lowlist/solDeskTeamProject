@@ -140,7 +140,14 @@ body {
 	background-color:white;
 	border-bottom: 2px solid black;
 	border-left: 2px solid black;
+	justify-content: center;
+	align-items: center;
 }
+.medium-center-right-top img{
+	width:200px;
+	height: auto;
+}
+
 .medium-center-right-bottom {
 	display:flex;
 	width:100%;
@@ -148,6 +155,13 @@ body {
 	background-color:white;
 	border-bottom: 2px solid black;
 	border-left: 2px solid black;
+	justify-content: center;
+	align-items: center;
+	
+}
+.medium-center-right-bottom img{
+	width:200px;
+	height: auto;
 	
 }
 
@@ -181,6 +195,23 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+/* .item-weather-info #dayOfWeek { */
+/* 	display: flex; */
+/* 	flex-direction: column; */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* } */
+/* .item-weather-info #dayOfWeek img{ */
+/* 	display: flex; */
+/* 	width: 100px; */
+/* 	height: 50%; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* } */
 
 .rain {
 	

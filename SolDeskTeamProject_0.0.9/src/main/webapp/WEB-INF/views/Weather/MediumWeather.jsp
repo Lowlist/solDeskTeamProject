@@ -29,7 +29,7 @@
 		<div class="medium-forecast-top-line">
 			<div class="medium-top-icon-line">
 				<div class="mediumIcons">
-					<a hre	f="${cp}/Weather/Main?area=서울">
+					<a href="${cp}/Weather/Main?area=서울">
 					<img alt="메인로고"src="${cp}/resources/img/main_logo.png"></a>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 			<div class="medium-high-icon-line">
 				<div class="goMain">
 
-				<h1><a href="${cp}/Weather/Main?area=서울">메인 홈</a></h1>
+				<h1><a href="${cp}/">메인 홈</a></h1>
 				</div>
 				<div class="goMain">
 
@@ -517,8 +517,12 @@
 				</div>
 			</div>
 			<div class="medium-center-right-line">
-			<div class="medium-center-right-top"></div>
-			<div class="medium-center-right-bottom"></div>
+			<div class="medium-center-right-top">
+			<img alt="메인로고"src="${cp}/resources/img/medium_title_icon.png">
+			</div>
+			<div class="medium-center-right-bottom">
+			<img alt="메인로고"src="${cp}/resources/img/medium_title_icon.png">
+			</div>
 			</div>
 		</div>
 		<!-- 중기예보 센터 끝 -->
