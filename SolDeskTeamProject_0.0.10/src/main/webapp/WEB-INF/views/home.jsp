@@ -32,7 +32,7 @@
                 <div class="home-center-right-map-line">
                 	<div class="home-center-right-map" id="homeCenterMap">
                 		<div class="map-btn" id=mapBtn0></div>
-                		<	div class="map-btn" id=mapBtn1></div>
+                		<div class="map-btn" id=mapBtn1></div>
                 		<div class="map-btn" id=mapBtn2></div>
                 	</div>
                 </div>

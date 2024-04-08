@@ -1,5 +1,10 @@
 package com.team.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,17 +58,22 @@ public class BoardController {
 	
 	//중기 컨트롤러
 	@GetMapping("/MediumWeather")
-	public void Medium(@RequestParam(value = "area", defaultValue = "") String area,Model model) {
-   	 if (area.isEmpty()) {
-	     area = "서울";
-	 }
+	public void Medium(@RequestParam(value = "area", defaultValue = "") String area,Model model, HttpServletRequest request) {
+	   	 if (area.isEmpty()) {
+		     area = "서울";
+		 }
+
 		System.out.println("미디움테스트");
+		request.setAttribute("weatherMap", mediumService.weatherMap());
 		model.addAttribute("temper",mediumService.mediumTempRun(area));
 		model.addAttribute("weather",mediumService.mediumWeatherRun(area));
 		model.addAttribute("forecast",mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData",mediumService.getDates());
 		model.addAttribute("Area",area);
+		model.addAttribute("error",mediumService.mediumWeatherArea(area));
 	}
+		
+		
 	
 	// 단기 컨트론러
 	@GetMapping("/ShortWeather")

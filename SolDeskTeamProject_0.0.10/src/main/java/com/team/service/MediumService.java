@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -288,6 +290,9 @@ public class MediumService {
 		else if(area.equals("포항")) {
 			area="11H10201";
 		}
+//		else {
+//			area="오류";
+//		}
 		return area;
 	}
 	
@@ -309,10 +314,10 @@ public class MediumService {
 		else if(area.equals("청주")) {
 			area="충청북도";
 		}
-		else if(area.equals("여수")) {
+		else if(area.equals("여수") || area.equals("목포")) {
 			area="전라남도";
 		}
-		else if(area.equals("전주")) {
+		else if(area.equals("전주")  || area.equals("군산")) {
 			area="전라북도";
 		}
 		else if(area.equals("안동") || area.equals("포항")) {
@@ -321,6 +326,8 @@ public class MediumService {
 		else if(area.equals("창원")) {
 			area="경상남도";
 		}
+		
+		
 		//지역코드변환
 		if(area.equals("서울") || area.equals("인천") || area.equals("경기도")) {
 			area="11B00000";
@@ -349,8 +356,11 @@ public class MediumService {
 		else if(area.equals("부산") || area.equals("울산") || area.equals("경상남도")) {
 			area="11H20000";
 		}
-		else if(area.equals("제주도")) {
+		else if(area.equals("제주") || area.equals("서귀포")) {
 			area="11G00000";
+		}
+		else {
+			area="오류";
 		}
 		return area;
 	}
@@ -372,10 +382,10 @@ public class MediumService {
 		else if(area.equals("청주")) {
 			area="충청북도";
 		}
-		else if(area.equals("여수")) {
+		else if(area.equals("여수") || area.equals("목포")) {
 			area="전라남도";
 		}
-		else if(area.equals("전주")) {
+		else if(area.equals("전주") || area.equals("군산")) {
 			area="전라북도";
 		}
 		else if(area.equals("안동") || area.equals("포항")) {
@@ -412,9 +422,28 @@ public class MediumService {
 		else if(area.equals("부산") || area.equals("울산") || area.equals("경상남도")) {
 			area="159";
 		}
-		else if(area.equals("제주도")) {
+		else if(area.equals("제주") || area.equals("서귀포")) {
 			area="184";
 		}
+//		else {
+//			area="오류";
+//		}
 		return area;
-	} 
+	}
+	public Map<String,String> weatherMap(){
+		Map<String, String> weatherMap = new HashMap<>();
+		
+		weatherMap.put("맑음", "wi-day-sunny");
+		weatherMap.put("구름많음", "wi-day-cloudy");
+		weatherMap.put("구름많고 비", "wi-day-rain");
+		weatherMap.put("구름많고 눈", "wi-day-snow");
+		weatherMap.put("구름많고 비/눈", "wi-day-rain-mix");
+		weatherMap.put("구름많고 소나기", "wi-day-showers");
+		weatherMap.put("흐림", "wi-cloudy");
+		weatherMap.put("흐리고 비", "wi-rain");
+		weatherMap.put("흐리고 눈", "wi-snow");
+		weatherMap.put("흐리고 비/눈", "wi-rain-mix");
+		weatherMap.put("흐리고 소나기", "wi-showers");
+		return weatherMap;
+	}
 }
