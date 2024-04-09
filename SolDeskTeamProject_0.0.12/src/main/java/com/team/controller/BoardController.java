@@ -73,13 +73,16 @@ public class BoardController {
 		}
 
 		System.out.println("미디움테스트");
-		request.setAttribute("weatherMap", mediumService.weatherMap());
+		request.setAttribute("morningWeatherMap", mediumService.morningWeatherMap());
+		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
 		model.addAttribute("forecast", mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData", mediumService.getDates());
 		model.addAttribute("Area", area);
 		model.addAttribute("error", mediumService.mediumWeatherArea(area));
+		model.addAttribute("areaBox",mediumService.areaBox());
+//		model.addAttribute("test",shortService.);
 	}
 
 	//미세먼지 컨트롤러

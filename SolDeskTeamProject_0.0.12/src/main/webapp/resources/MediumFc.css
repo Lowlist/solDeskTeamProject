@@ -15,7 +15,7 @@ body {
 .medium-forecast {
 	min-width: 1200px;
 	width: auto;
-	height: 2200px;
+	height: 2500px;
 	/* 	background-color: aqua; */
 	border-radius: 10px;
 }
@@ -170,6 +170,15 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+.morning-weather{
+ position: relative;
+
+}
+.evening-weather{
+display: flex;
+ position: relative;
+
+}
 
 .item-weather-info .weathers {
 	display: flex;
@@ -178,6 +187,14 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 12px;
+}
+.btn-group{
+	display: flex;
+	height: 45%;
+	position: relative;
+	left:10px;
+	top:25px;
+	
 }
 
 .medium-center-right-line {

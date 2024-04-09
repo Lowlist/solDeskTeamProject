@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
 import com.team.dto.mediumwthr.date.MediumDate;
 import com.team.dto.mediumwthr.forecast.MediumForecast;
 import com.team.dto.mediumwthr.temperature.MediumTemperature;
@@ -215,7 +216,13 @@ public class MediumService {
 		}
 		return mediumForecastJson(in);
 	}
-	
+	public String areaBox() {
+        String[] areaBox = {"서울", "인천", "수원", "파주", "춘천", "원주", "대전", "서산", "세종", "청주", "서귀포", "광주", "제주", "목포", "여수", "전주", "군산", "부산", "울산", "창원", "대구", "안동", "포항", "강릉"};
+        Gson gson = new Gson();
+        String json = gson.toJson(areaBox);
+		return json;
+		
+	}	
 	// 파라미터 값 변환 로직
 	public String mediumTemperatureArea(String area) {
 		if(area.equals("서울")) {
@@ -430,7 +437,7 @@ public class MediumService {
 //		}
 		return area;
 	}
-	public Map<String,String> weatherMap(){
+	public Map<String,String> morningWeatherMap(){
 		Map<String, String> weatherMap = new HashMap<>();
 		
 		weatherMap.put("맑음", "wi-day-sunny");
@@ -439,6 +446,22 @@ public class MediumService {
 		weatherMap.put("구름많고 눈", "wi-day-snow");
 		weatherMap.put("구름많고 비/눈", "wi-day-rain-mix");
 		weatherMap.put("구름많고 소나기", "wi-day-showers");
+		weatherMap.put("흐림", "wi-cloudy");
+		weatherMap.put("흐리고 비", "wi-rain");
+		weatherMap.put("흐리고 눈", "wi-snow");
+		weatherMap.put("흐리고 비/눈", "wi-rain-mix");
+		weatherMap.put("흐리고 소나기", "wi-showers");
+		return weatherMap;
+	}
+	public Map<String,String> nightWeatherMap(){
+		Map<String, String> weatherMap = new HashMap<>();
+		
+		weatherMap.put("맑음", "wi-night-clear");
+		weatherMap.put("구름많음", "wi-night-alt-cloudy");
+		weatherMap.put("구름많고 비", "wi-night-alt-rain");
+		weatherMap.put("구름많고 눈", "wi-night-alt-snow");
+		weatherMap.put("구름많고 비/눈", "wi-night-alt-rain-mix");
+		weatherMap.put("구름많고 소나기", "wi-night-alt-showers");
 		weatherMap.put("흐림", "wi-cloudy");
 		weatherMap.put("흐리고 비", "wi-rain");
 		weatherMap.put("흐리고 눈", "wi-snow");

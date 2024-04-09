@@ -27,6 +27,30 @@
 <body>
 <script>
     $(document).ready(function(){
+        // 초기에는 오전 버튼이 선택되어 있음
+        showMorning();
+
+        // 오전 버튼 클릭 시
+        $('#morning-btn').click(function() {
+            showMorning();
+        });
+
+        // 오후 버튼 클릭 시
+        $('#evening-btn').click(function() {
+            showNight();
+        });
+
+        // 오전을 표시하는 함수
+        function showMorning() {
+            $('.morning').show();
+            $('.night').hide();
+        }
+
+        // 오후를 표시하는 함수
+        function showNight() {
+            $('.morning').hide();
+            $('.night').show();
+        }
         $("#button-addon2").click(function(event) {
             // 기본 동작 방지 (페이지 새로고침 방지)
             event.preventDefault();
@@ -40,34 +64,33 @@
             // 예를 들어, 콘솔에 로그로 출력할 수 있습니다.
             console.log("사용자가 입력한 값:", inputValue);
 
-            // 또는 해당 값을 서버로 보낼 수도 있습니다.
-            // 이를 위해 AJAX 요청을 사용할 수 있습니다.
             var selectedArea = inputValue;
-            if ($(this).data("error") == "오류") {
+            var areaBoxJson = '${areaBox}';
+            var areaBox = JSON.parse(areaBoxJson);
+            if ($.inArray(selectedArea,areaBox) == -1) {
                 console.log("잘못 입력했습니다.");
+                alert('선택한 지역이 유효하지 않습니다.');
                 // 여기에 서울을 입력했을 때 수행할 동작을 추가합니다.
             } else {
-            	console.log($(this).data("error"));
-            	console.log('${error}====');
                 console.log("제대로 입력했습니다.");
                 // 여기에 서울 이외의 값을 입력했을 때 수행할 동작을 추가합니다.
-            }
-            $.ajax({
-                type: 'GET',
-                url: '${cp}/Weather/MediumWeather',
-                data: { area: selectedArea },
-                success: function(response) {
-                    console.log('Success:', response);
-                    // body의 내용을 변경
-                    $('body').html(response);
-                    
-                    // 선택된 옵션을 첫 번째 옵션으로 이동
-                    $('#areaSelect').prepend($('#areaSelect option:selected'));
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                }
+           		 $.ajax({
+	                type: 'GET',
+	                url: '${cp}/Weather/MediumWeather',
+	                data: { area: selectedArea },
+	                success: function(response) {
+	                    console.log('Success:', response);
+	                    // body의 내용을 변경
+	                    $('body').html(response);
+	                    
+	                    // 선택된 옵션을 첫 번째 옵션으로 이동
+	                    $('#areaSelect').prepend($('#areaSelect option:selected'));
+	                },
+	                error: function(xhr, status, error) {
+	                    console.error('Error:', error);
+	                }
             });
+            }
         });
         // 입력값이 지역인지 확인하는 함수
         function isLocation(input) {
@@ -165,25 +188,132 @@
 				</div>
 				<div id="area-search" class="d-flex">
 					<h3>지역검색:</h3>
-					    <form>
+					    <form action="${cp}/Weather/MediumWeather">
 						    <div class="input-group pb-4">
-	  							<input type="text" id="search-input" class="form-control" placeholder="지역을 입력하세요..." aria-describedby="basic-addon2">
+	  							<input type="text" id="search-input" name="area" class="form-control" placeholder="지역을 입력하세요..." aria-describedby="basic-addon2">
 	  							 <button class="btn btn-outline-secondary" type="submit" id="button-addon2" data-error="${error}">검색</button>
 							</div>
     					</form>
+					<div class="btn-group" role="group" aria-label="Basic outlined example">
+					    <button type="button" class="btn btn-outline-secondary" id="morning-btn">오전</button>
+					    <button type="button" class="btn btn-outline-secondary" id="evening-btn">오후</button>
+					</div>
 				</div>
 				<div class="item-weather-info" id="wf3">
 					<div>${MediumData.get(0).date}</div>
 					<div>${MediumData.get(0).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<c:forEach var="entry" items="${weatherMap}">
+						<c:forEach var="entry" items="${morningWeatherMap}">
 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
 	        					<i class="wi ${entry.value}"></i>
 	    					</c:if>
 						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf3Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Pm}
+					</div>
+					
+					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
+					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
+					<div>
+						<i class="wi wi-raindrop" id="rain-rate"></i>
+						${weather.response.body.items.item.get(0).rnSt3Am}%
+					</div>
+				</div>
+				<div class="item-weather-info" id="wf3">
+					<div>${MediumData.get(0).date}</div>
+					<div>${MediumData.get(0).dayOfWeek}요일</div>
+					<div class="morning" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Pm}
+					</div>
+					
+					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
+					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
+					<div>
+						<i class="wi wi-raindrop" id="rain-rate"></i>
+						${weather.response.body.items.item.get(0).rnSt3Am}%
+					</div>
+				</div>
+				<div class="item-weather-info" id="wf3">
+					<div>${MediumData.get(0).date}</div>
+					<div>${MediumData.get(0).dayOfWeek}요일</div>
+					<div class="morning" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Pm}
+					</div>
+					
+					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
+					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
+					<div>
+						<i class="wi wi-raindrop" id="rain-rate"></i>
+						${weather.response.body.items.item.get(0).rnSt3Am}%
+					</div>
+				</div>
+				<div class="item-weather-info" id="wf3">
+					<div>${MediumData.get(0).date}</div>
+					<div>${MediumData.get(0).dayOfWeek}요일</div>
+					<div class="morning" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Pm}
 					</div>
 					
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
@@ -196,17 +326,25 @@
 				<div class="item-weather-info" id="wf4">
 					<div>${MediumData.get(1).date}</div>
 					<div>${MediumData.get(1).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf4Am eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf4Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf4Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf4Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf4Pm}
 					</div>
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin4}</div>
 					<div>최고기온:${temper.response.body.items.item.get(0).taMax4}</div>
@@ -218,17 +356,25 @@
 				<div class="item-weather-info" id="wf5">
 					<div>${MediumData.get(2).date}</div>
 					<div>${MediumData.get(2).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf5Am eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf5Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf5Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf5Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf5Pm}
 					</div>
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin5}</div>
@@ -241,17 +387,25 @@
 				<div class="item-weather-info" id="wf6">
 					<div>${MediumData.get(3).date}</div>
 					<div>${MediumData.get(3).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf6Am eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf6Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf6Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf6Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf6Pm}
 					</div>
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin6}</div>
@@ -264,17 +418,25 @@
 				<div class="item-weather-info" id="wf7">
 					<div>${MediumData.get(4).date}</div>
 					<div>${MediumData.get(4).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf7Am eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf7Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf7Pm}
 					</div>
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin7}</div>
@@ -287,17 +449,25 @@
 				<div class="item-weather-info" id="wf8">
 					<div>${MediumData.get(5).date}</div>
 					<div>${MediumData.get(5).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf8 eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
-					${weather.response.body.items.item.get(0).wf8}
+					${weather.response.body.items.item.get(0).wf7Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf7Pm}
 					</div>
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin8}</div>
@@ -310,17 +480,25 @@
 				<div class="item-weather-info" id="wf9">
 					<div>${MediumData.get(6).date}</div>
 					<div>${MediumData.get(6).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf9 eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
-					${weather.response.body.items.item.get(0).wf9}
+					${weather.response.body.items.item.get(0).wf7Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf7Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf7Pm}
 					</div>
 
 					<div>최저기온:${temper.response.body.items.item.get(0).taMin9}</div>
@@ -333,15 +511,23 @@
 				<div class="item-weather-info" id="wf10">
 					<div>${MediumData.get(7).date}</div>
 					<div>${MediumData.get(7).dayOfWeek}요일</div>
-					<div>
+					<div class="morning" style="display: none;">
 					<div class="weathers">
-						<div class="weathers">
-							<c:forEach var="entry" items="${weatherMap}">
-		    					<c:if test="${weather.response.body.items.item.get(0).wf10 eq entry.key}">
-		        					<i class="wi ${entry.value}"></i>
-		    					</c:if>
-							</c:forEach>
-						</div>
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf10 eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf10}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf10 eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
 					</div>
 					${weather.response.body.items.item.get(0).wf10}
 					</div>
@@ -360,7 +546,7 @@
 			<div class="medium-center-right-line">
 				<div class="medium-center-right-top">
 					<div id="Areas">
-					<select id="areaSelect">
+					<select class="form-select" aria-label="Default select example" id="areaSelect">
 						<option value="">-----------------지역선택-----------------</option>
 						<option value="서울">서울</option>
 						<option value="인천">인천</option>
@@ -402,7 +588,7 @@
 						<h2>주간예보</h2>
 					</div>
 					<div id="week-forecast-textbox">
-						<h3>${forecast.response.body.items.item.get(0).wfSv}</h3>
+						<h4>${forecast.response.body.items.item.get(0).wfSv}</h4>
 					</div>					
 				</div>
 			</div>

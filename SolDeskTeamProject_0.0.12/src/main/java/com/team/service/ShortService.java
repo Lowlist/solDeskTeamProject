@@ -79,7 +79,7 @@ public class ShortService {
 			
 	        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
 	        String weatherInfo = response.getBody(); // 날씨 정보 가져오기
-//	        System.out.println("확인2"+weatherInfo);
+	        System.out.println("확인2"+weatherInfo);
 	        shortWeatherInsert(weatherInfo ,area);
 //	        weatherInfoList.add(weatherInfo); // 리스트에 추가
         }
