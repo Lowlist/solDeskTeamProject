@@ -1,0 +1,215 @@
+/* 전체 컨테이너 스타일 */
+.dust-main {
+   	min-width: 1530px;
+    width: auto;
+    height: 1200px;
+}
+
+/* 상단 라인 스타일 */
+.dust-top-line {
+    display: flex;
+    width: 100%;
+    height: 3%;
+}
+
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SKY-BORI'; /* 원하는 폰트 이름 지정 */
+    src: url('font/SKYBORI.ttf') format('truetype'); /* TrueType 폰트 경로 지정 */
+}
+
+.dust-top-icon-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: auto;
+}
+.dust-top-icon{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 3%;
+}
+#dustTopIconImg{
+   	width: 50px;
+    height: 100%;
+ 	background-image: url('img/mini_icon.png');
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+.dust-top-menu-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+}
+#dustTopIconWord{
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 18px; 
+	height: 100%;
+}
+.dust-top-menu-word{
+	font-family: 'SKY-BORI', sans-serif;
+	font-size: 16px;
+	height: 100%;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.dust-high-line{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    height: 14%;
+}
+.dust-high-icon-line{
+	display: flex;
+    width: 50%;
+    height: 100%;
+}
+#dustHighIcon{
+	height: 100%;
+	width: 100%;
+	background-image: url('img/main_logo.png');
+	background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#dustHighIcon{
+	height: 100%;
+	width: 100%;
+	background-image: url('img/main_logo.png');
+	background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* 중앙 라인 스타일 */
+.dust-center-line {
+	display: flex;
+    justify-content: center; /* 내부 요소를 수평으로 가운데 정렬 */
+    align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+    width: 100%;
+    height: 67%;
+    border: 1px solid black;
+    border-top:0px;
+    border-left:0px;
+    border-right:0px;
+    /* 내부 여백 지정 */
+}
+
+.dust-center-content-container {
+    display: flex; /* 내부 요소를 가로로 배열 */
+    width: 100%;
+}
+
+.dust-center-content-left {
+   height: 100%;
+    margin-left: auto;
+    width:50%
+}
+
+.dust-center-left-header-line {
+	display: flex;
+    width: 100%;
+    height: 5%;
+    align-items:center;
+    position: relative;
+    border: 1px solid black;
+    border-left: 0px;
+    border-right: 0px;
+}
+.dust-center-left-content-button {
+	display: flex;
+	position : relative;
+    align-items: center;
+    right : 2%;
+    width: 30px;
+    height: 30px;
+	justify-content: center;
+	background-color: red;
+}
+.dust-center-left-content-button:hover {
+	background-color: #dee2e6;
+}
+
+.dust-center-left-header-icon{
+	width: 20%;
+	height: 100%;
+	display: flex; /* 텍스트를 수직 및 수평으로 가운데 정렬하기 위해 flexbox 레이아웃 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 20px;
+	transition: background-color 0.5s ease; 
+	cursor: pointer;
+	user-select: none;
+}
+.dust-center-left-header-icon:hover {
+    background-color: #dee2e6; /* 마우스 호버 시 배경 색상을 빨간색으로 변경 */
+}
+
+#dustCenterLeftHeaderIcon0{
+	margin-left:auto;
+}
+#dustCenterLeftHeaderIcon2{
+	margin-right:auto;
+}
+.dust-center-content-main {
+	width : 100%;
+	height: 100%;
+}
+.dust-center-content-main-area {
+}
+
+.dust-center-right {
+	display: flex;
+    width: 20%;
+    height: 100%;
+    margin-right: auto; /* 오른쪽으로부터 자동 마진 부여 */
+    flex-direction: column;
+    border: 1px solid black;
+    border-top:0px;
+    border-bottom:0px;
+}
+
+.dust-center-right-inform {
+	height : 60px;
+	display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+#dustCenterRightContent {
+	font-family: 'SKY-BORI', sans-serif;
+	font-size: 18px;
+	float: right;
+	height : auto;
+	width : auto;
+	margin : 10px 10px 10px 10px;
+	
+}
+#dustCenterRightStandard {
+	left: 8%;
+    position: relative;
+}
+
+/* 전체 페이지 폰트 스타일 */
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline; /* 폰트 지정 */
+}
