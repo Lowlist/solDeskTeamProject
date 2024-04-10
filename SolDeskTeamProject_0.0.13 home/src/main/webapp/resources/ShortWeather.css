@@ -1,0 +1,132 @@
+
+
+/* 헤더 부분 */
+.inner_header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray
+}
+.inner_header .logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+.inner_header .menu {
+    flex-grow: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+.inner_header .login {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 5%;
+}
+
+
+/* 본문 부분 */
+
+.main {
+    background: gray;
+    margin: auto;
+    display: grid;
+    width: 99%;
+    height: 100%;
+    grid-template-columns: 69% 30%;
+    justify-content: space-between;
+    /* align-items:stretch; */
+    /* align-items:center; */
+}
+.content_left {
+    background: yellow;
+    width: 100%;
+    font-size: 40px;
+}
+.content_left_1 {
+    margin: 10px;
+    background: red;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_left_1 button {
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+.content_left_1 svg {
+    margin-left: 800px;
+}
+.content_left_2 {
+    text-align: center;
+    margin: 10px;
+    background: orange;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_left_3 {
+    text-align: center;
+    margin: 10px;
+    background: green;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_left_4 {
+    text-align: center;
+    margin: 10px;
+    background: blue;
+    min-height: 400px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_left_5 {
+    text-align: center;
+    margin: 10px;
+    background: darkblue;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_left_6 {
+    text-align: center;
+    margin: 10px;
+    background: purple;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.content_right {
+    background: yellow;
+    width: 100%;
+    font-size: 40px;
+}
+.content_right_1 {
+	margin: 10px;
+    background: #adebad;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_2 {
+	margin: 10px;
+    background: #ccebff;
+    min-height: 250px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_3 {
+	margin: 10px;
+    background: #ffb3cc;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_4 {
+	margin: 10px;
+    background: #ffbf80;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_5 {
+	margin: 10px;
+    background: #b3b3cc;
+    min-height: 300px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+
+.line_chart {
+    overflow-x: scroll;
+}
+
+ul {list-style: none;display: flex;}
+li {padding: 20px}
