@@ -1,0 +1,14 @@
+v0.0.1 - Spring MVC 패턴 프로토타입 제작
+v0.0.2 - Main.jsp 의 탬플릿 작성 및 Dto ServiceImpl 측 api불러오는 임시코드 작성
+v0.0.3 - Div/Css Class명 수정 및 ServiceImpl 측 livingWeather 갱신 및 area의 Parameter 변환코드 작성
+v0.0.4 - ASOS 종관 날씨 API 추가 및 중기예보 API 추가 중기예보 JSP,CSS 추가 / 중기 예보담당:형주
+v0.0.5 - Service 부분 개편 각 기능별 class 분할 / 중기예보 온도,날씨 별 코드 분리 / 기타 코드 가독성 향상을 위한 변경(publicWork class 추가 후 공용함수 분배)
+v0.0.6 - MySql DataBase 연결 및 WeatherMapper.xml,WeatherMapper.jsp 업데이트 / 코드 가독성을 위한 변수명 변경진행
+v0.0.61 - img 추가 및 코드개선
+v0.0.7 - 단기 API 추가 및 Main div 개선 및 css 수정
+v0.0.8 - 미세먼지 API 추가 및 main,medium div,css 수정 / 단기 로직 개선 / header.jsp 추가 및 c:import 도입
+v0.0.9 - Main.jsp 및 컨트롤러 삭제 후 home.jsp 이동 / home에 naver Map api 추가 / PastWeather.jsp 추가 및 컨트롤러 추가 midium header 추가 및 뷰 개선
+v0.0.10 - short 개선 및 dust 개선  
+v0.0.11 - naverAPI 관련 개선 short view logic 개선 dust view logic 개선
+v0.0.12 - 중기 주간예보 검색기능 추가 css 개선 / Home 지도 좌표를 통한 주소출력 로직 추가 및 CSS JSP 개선 / 단기 로직 개선 및 JSP 개선 / Dust view 개선
+v0.0.13 - HomeLogic.js 로직분할 및 함수분할 Main Css/Jsp 개선 / 단기 버그수정 및 JSP CSS 개선 / Dust JSP CSS JS 개선 / 중기 JSP CSS 검색기능 추가 
