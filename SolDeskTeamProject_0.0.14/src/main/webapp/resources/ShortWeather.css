@@ -1,0 +1,230 @@
+.short-main {
+   	min-width: 1530px;
+    width: auto;
+    height: 1200px;
+}
+/* 헤더 부분 */
+.inner_header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray
+}
+.inner_header .logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+.inner_header .menu {
+    flex-grow: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+.inner_header .login {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 5%;
+}
+
+
+/* 본문 부분 */
+
+.main {
+/*     background: gray; */
+    margin: auto;
+    display: grid;
+    width: 99%;
+    height: 100%;
+    grid-template-columns: 69% 30%;
+    justify-content: space-between;
+    /* align-items:stretch; */
+    /* align-items:center; */
+}
+.content-left {
+/*     background: yellow; */
+    width: 100%;
+    font-size: 40px;
+}
+.content-left-1 {
+    margin: 10px;
+    background: red;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-left-1 button {
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+.content-left-1 svg {
+    margin-left: 800px;
+}
+.content-left-2 {
+    text-align: center;
+    margin: 10px;
+    background: orange;
+    border-bottom: 1px solid #d8d8d8;
+    display: grid;
+    width: 99%;
+    grid-template-columns: 30% 69%;
+    justify-content: space-between;
+}
+.content-left-2-left {
+ margin: 10px;
+ border: 1px solid #d8d8d8;
+}
+.content-left-2-right-1 {
+ margin: 10px;
+ border: 1px solid #d8d8d8;
+}
+.content-left-2-right-2 {
+ margin: 10px;
+ border: 1px solid #d8d8d8;
+}
+
+.content-left-3 {
+    text-align: center;
+    margin: 10px;
+/*     background: green; */
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-left-4 {
+    text-align: center;
+    margin: 10px;
+    background: blue;
+    min-height: 400px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-left-5 {
+    text-align: center;
+    margin: 10px;
+    background: darkblue;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-left-6 {
+    text-align: center;
+    margin: 10px;
+    background: purple;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.content_right {
+    background: yellow;
+    width: 100%;
+    font-size: 40px;
+}
+.content_right_1 {
+ margin: 10px;
+    background: #adebad;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_2 {
+ margin: 10px;
+    background: #ccebff;
+    min-height: 250px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_3 {
+ margin: 10px;
+    background: #ffb3cc;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_4 {
+ margin: 10px;
+    background: #ffbf80;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content_right_5 {
+ margin: 10px;
+    background: #b3b3cc;
+    min-height: 300px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+
+.line_chart {
+    overflow-x: scroll;
+}
+
+.content-left-1-left {
+    background: gray;
+    margin: auto;
+ display: grid;
+ width: 99%;
+  grid-template-columns: 30% 69%;
+  justify-content: space-between;
+}
+
+#satellight {
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+    height: auto; /* 높이를 자동으로 조절하여 가로세로 비율을 유지 */
+    max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비로 제한 */
+    max-height: 100%; /* 이미지의 최대 높이를 부모 요소의 높이로 제한 */
+    overflow: hidden; /* 넘치는 부분을 숨김 */
+}
+
+.short-top-line {
+    display: flex;
+    width: 100%;
+    height: 3%;
+}
+
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SKY-BORI'; /* 원하는 폰트 이름 지정 */
+    src: url('font/SKYBORI.ttf') format('truetype'); /* TrueType 폰트 경로 지정 */
+}
+
+.short-top-icon-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: auto;
+}
+
+.short-top-icon{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 3%;
+}
+#shortTopIconImg{
+   	width: 50px;
+    height: 100%;
+ 	background-image: url('img/mini_icon.png');
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+
+#shortTopIconWord{
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 18px; 
+	height: 100%;
+}
+
+.short-top-menu-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+}
+
+.short-top-menu-word{
+	font-family: 'SKY-BORI', sans-serif;
+	font-size: 16px;
+	height: 100%;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+ul {list-style: none;display: flex;}
+li {padding: 20px}
