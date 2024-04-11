@@ -67,6 +67,35 @@ public class MediumService {
 	    
 	    return dateList;
 	}
+	public ArrayList<MediumDate> getDates2() {
+	    ArrayList<MediumDate> dateList = new ArrayList<>();
+	    Calendar cal = Calendar.getInstance();
+	    
+	    
+	    // 3일 후부터 10일 후까지의 날짜를 계산하여 ArrayList에 추가
+	    for (int i = 0; i < 3; i++) { // 3일 후부터 10일 후까지 총 8일
+	        // 날짜 포맷 지정
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("MM월 dd일");
+	        SimpleDateFormat dayOfWeekFormat = new SimpleDateFormat("E");
+	        // 날짜와 요일 정보를 가져옴
+	        String dateStr = dateFormat.format(cal.getTime());
+	        String dayOfWeekStr = dayOfWeekFormat.format(cal.getTime());
+	        
+	        // MediumDate 객체를 생성하고 날짜와 요일 설정
+	        MediumDate DateData = new MediumDate();
+	        DateData.setDate(dateStr);
+	        System.out.println(dateStr);
+	        DateData.setDayOfWeek(dayOfWeekStr);
+	        
+	        // ArrayList에 추가
+	        dateList.add(DateData);
+	        
+	        // 다음 날짜로 이동
+	        cal.add(Calendar.DATE, 1);
+	    }
+	    
+	    return dateList;
+	}
 	
 	// 형주 중기기상(온도) api로직 
 	public void mediumTemperaturesApi(String area,SqlData sql) {

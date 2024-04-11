@@ -58,7 +58,14 @@ body {
 	right: 40px;
 	width: 240px;
 }
-
+#message {
+	display: flex;
+	background-color: white;
+	border-bottom: 2px solid black;
+	justify-content: center; /* 수평 가운데 정렬 */
+	align-items: center;
+	
+}
 .medium-high-line {
 	display: flex;
 	width: 100%;

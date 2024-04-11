@@ -20,21 +20,22 @@
                 center: cityhall,
                 zoom: 7
             });
-        var marker = new naver.maps.Marker({
-                map: map,
-                position: cityhall
-            });
+        //마커
+        // var marker = new naver.maps.Marker({
+        //         map: map,
+        //         position: cityhall
+        //     });
         var contentString = [
                 '<div class="">',
-                '?',
+                // '?',
                 '</div>'
             ].join('');
 
         var infowindow = new naver.maps.InfoWindow({
             content: contentString
         });
-        
-        infowindow.open(map, marker);
+        //,marker가 map옆에 있었음
+        infowindow.open(map);
 
         window.navermap_authFailure = function () {
             console.log("인증실패했음");

@@ -78,11 +78,11 @@ public class BoardController {
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
 		model.addAttribute("forecast", mediumService.mediumForecastRun(area));
-		model.addAttribute("MediumData", mediumService.getDates());
+		model.addAttribute("MediumDate1", mediumService.getDates());
+		model.addAttribute("MediumDate2",mediumService.getDates2());//			model.addAttribute("test",shortService.);
 		model.addAttribute("Area", area);
 		model.addAttribute("error", mediumService.mediumWeatherArea(area));
 		model.addAttribute("areaBox", mediumService.areaBox());
-//			model.addAttribute("test",shortService.);
 	}
 
 	//미세먼지 컨트롤러

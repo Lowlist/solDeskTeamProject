@@ -199,102 +199,104 @@
 					    <button type="button" class="btn btn-outline-secondary" id="evening-btn">오후</button>
 					</div>
 				</div>
-				<div class="item-weather-info" id="wf3">
-					<div>${MediumData.get(0).date}</div>
-					<div>${MediumData.get(0).dayOfWeek}요일</div>
-					<div class="morning" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${morningWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Am}
-					</div>
-					<div class="night" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${nightWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Pm}
-					</div>
+				<div id="message">본 기상예보는 ${MediumDate1.get(0).date}부터 ${MediumDate1.get(7).date}까지의 날씨를 알려드립니다.</div>
+<!--  	재형이가 단기 데이터로직 만들면 추가할 예정 -->
+<!-- 				<div class="item-weather-info" id="wf"> -->
+<%-- 					<div>${MediumDate2.get(0).date}</div> --%>
+<%-- 					<div>${MediumDate2.get(0).dayOfWeek}요일</div> --%>
+<!-- 					<div class="morning" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${morningWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Am} --%>
+<!-- 					</div> -->
+<!-- 					<div class="night" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${nightWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Pm} --%>
+<!-- 					</div> -->
 					
-					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
-					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
-					<div>
-						<i class="wi wi-raindrop" id="rain-rate"></i>
-						${weather.response.body.items.item.get(0).rnSt3Am}%
-					</div>
-				</div>
-				<div class="item-weather-info" id="wf3">
-					<div>${MediumData.get(0).date}</div>
-					<div>${MediumData.get(0).dayOfWeek}요일</div>
-					<div class="morning" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${morningWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Am}
-					</div>
-					<div class="night" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${nightWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Pm}
-					</div>
+<%-- 					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div> --%>
+<%-- 					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div> --%>
+<!-- 					<div> -->
+<!-- 						<i class="wi wi-raindrop" id="rain-rate"></i> -->
+<%-- 						${weather.response.body.items.item.get(0).rnSt3Am}% --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="item-weather-info" id="wf1"> -->
+<%-- 					<div>${MediumDate2.get(1).date}</div> --%>
+<%-- 					<div>${MediumDate2.get(1).dayOfWeek}요일</div> --%>
+<!-- 					<div class="morning" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${morningWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Am} --%>
+<!-- 					</div> -->
+<!-- 					<div class="night" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${nightWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Pm} --%>
+<!-- 					</div> -->
 					
-					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
-					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
-					<div>
-						<i class="wi wi-raindrop" id="rain-rate"></i>
-						${weather.response.body.items.item.get(0).rnSt3Am}%
-					</div>
-				</div>
-				<div class="item-weather-info" id="wf3">
-					<div>${MediumData.get(0).date}</div>
-					<div>${MediumData.get(0).dayOfWeek}요일</div>
-					<div class="morning" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${morningWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Am}
-					</div>
-					<div class="night" style="display: none;">
-					<div class="weathers">
-						<c:forEach var="entry" items="${nightWeatherMap}">
-	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
-	        					<i class="wi ${entry.value}"></i>
-	    					</c:if>
-						</c:forEach>
-					</div>
-					${weather.response.body.items.item.get(0).wf3Pm}
-					</div>
+<%-- 					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div> --%>
+<%-- 					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div> --%>
+<!-- 					<div> -->
+<!-- 						<i class="wi wi-raindrop" id="rain-rate"></i> -->
+<%-- 						${weather.response.body.items.item.get(0).rnSt3Am}% --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="item-weather-info" id="wf2"> -->
+<%-- 					<div>${MediumDate2.get(2).date}</div> --%>
+<%-- 					<div>${MediumDate2.get(2).dayOfWeek}요일</div> --%>
+<!-- 					<div class="morning" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${morningWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Am} --%>
+<!-- 					</div> -->
+<!-- 					<div class="night" style="display: none;"> -->
+<!-- 					<div class="weathers"> -->
+<%-- 						<c:forEach var="entry" items="${nightWeatherMap}"> --%>
+<%-- 	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}"> --%>
+<%-- 	        					<i class="wi ${entry.value}"></i> --%>
+<%-- 	    					</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
+<%-- 					${weather.response.body.items.item.get(0).wf3Pm} --%>
+<!-- 					</div> -->
 					
-					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
-					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
-					<div>
-						<i class="wi wi-raindrop" id="rain-rate"></i>
-						${weather.response.body.items.item.get(0).rnSt3Am}%
-					</div>
-				</div>
+<%-- 					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div> --%>
+<%-- 					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div> --%>
+<!-- 					<div> -->
+<!-- 						<i class="wi wi-raindrop" id="rain-rate"></i> -->
+<%-- 						${weather.response.body.items.item.get(0).rnSt3Am}% --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<div class="item-weather-info" id="wf3">
-					<div>${MediumData.get(0).date}</div>
-					<div>${MediumData.get(0).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(0).date}</div>
+					<div>${MediumDate1.get(0).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -324,8 +326,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf4">
-					<div>${MediumData.get(1).date}</div>
-					<div>${MediumData.get(1).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(1).date}</div>
+					<div>${MediumDate1.get(1).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -354,8 +356,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf5">
-					<div>${MediumData.get(2).date}</div>
-					<div>${MediumData.get(2).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(2).date}</div>
+					<div>${MediumDate1.get(2).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -385,8 +387,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf6">
-					<div>${MediumData.get(3).date}</div>
-					<div>${MediumData.get(3).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(3).date}</div>
+					<div>${MediumDate1.get(3).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -416,8 +418,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf7">
-					<div>${MediumData.get(4).date}</div>
-					<div>${MediumData.get(4).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(4).date}</div>
+					<div>${MediumDate1.get(4).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -447,8 +449,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf8">
-					<div>${MediumData.get(5).date}</div>
-					<div>${MediumData.get(5).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(5).date}</div>
+					<div>${MediumDate1.get(5).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -478,8 +480,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf9">
-					<div>${MediumData.get(6).date}</div>
-					<div>${MediumData.get(6).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(6).date}</div>
+					<div>${MediumDate1.get(6).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
@@ -509,8 +511,8 @@
 					</div>
 				</div>
 				<div class="item-weather-info" id="wf10">
-					<div>${MediumData.get(7).date}</div>
-					<div>${MediumData.get(7).dayOfWeek}요일</div>
+					<div>${MediumDate1.get(7).date}</div>
+					<div>${MediumDate1.get(7).dayOfWeek}요일</div>
 					<div class="morning" style="display: none;">
 					<div class="weathers">
 						<c:forEach var="entry" items="${morningWeatherMap}">
