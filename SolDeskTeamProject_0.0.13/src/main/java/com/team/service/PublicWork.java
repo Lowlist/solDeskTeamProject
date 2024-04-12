@@ -90,7 +90,7 @@ public class PublicWork {
 		String nowTime = today.format(formatter);
 		return nowTime;
 	}
-	
+	//단기 시간
 	public String nowTimes() {
 	    LocalTime now = LocalTime.now();
 	    int minute = now.getMinute();
@@ -101,12 +101,14 @@ public class PublicWork {
 	    String nowTimes = now.withMinute(minute).format(formatter);
 	    return nowTimes;
 	}
+	//단기 날짜
 	public String nowDates() {
 		LocalDate today = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 	    String nowDate = today.format(formatter);
 	   	return nowDate;
 	}
+	//단기 내일 날짜
 	public String tomorrowDate() {
 		 LocalDate today = LocalDate.now();
 		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");

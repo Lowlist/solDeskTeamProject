@@ -21,7 +21,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="${cp}/resources/HomeLogic.js"></script>
 <!-- shortWeather css -->
 <link href="${cp}/resources/ShortWeather.css" rel="stylesheet" type="text/css" />
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		</div>
 <!-- 안쪽 헤더 -->
 <div class="inner_header">
-  <!-- 메인 로고 -->
+  <div><!-- 메인 로고 -->
   <h1 class="logo">
   <svg 
     xmlns="http://www.w3.org/2000/svg"
@@ -100,36 +100,15 @@ $(document).ready(function(){
   <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
   <a>날씨</a>
   </h1>
+  </div>
   <!-- 메뉴 -->
   <div class="menu">
     <!-- role은 태그의 구조 및 동작에 대한 정보(역할)을 전달하기 위한 목적일 뿐 -->
-    <ul role="menubar">
-      <li role="menuitem">
-        <a href="#">홈</a>
-      </li>
-      <li role="menuitem">
-        <a href="#">예보비교</a>
-      </li>
-      <li role="menuitem">
-        <a href="#">미세먼지</a>
-      </li>
-      <li role="menuitem">
-        <a href="#">지도</a>
-      </li>
-      <li role="menuitem">
-        <a href="#">영상</a>
-      </li>
-      <li role="menuitem">
-        <a href="#">기상특보</a>
-      </li>
-    </ul>
+     <!--  <div id="a"><a href="#">홈</a></div>
+      <div><a href="#">중기예보</a></div>
+      <div><a href="#">단기예보</a></div>
+      <div><a href="#">미세먼지</a></div> -->
   </div>
-
-  <!-- 로그인 -->
-  <div class="login">
-    <button>로그인</button>
-  </div>
-
 </div>
 
 <!-- 내용 -->
@@ -280,12 +259,43 @@ $(document).ready(function(){
 			
 			</div>
         </div>
-        <c:forEach var="item" items="${searchTomorrowWeather}"> 
-       	 	<c:if test="${item.category eq 'TMP'}"> 
-		           온도 ${item.fcstValue} 
-	        </c:if> 
-	       	 </c:forEach> 
-<table border="1">
+<table>
+    <tr>
+    	<c:forEach var="item" items="${searchSkyWeather}">
+            <td>${item.fcstValue}</td>
+        </c:forEach>
+    </tr>
+		<!-- 기온 --> <!-- 그래프로 나타내는 구조로 부탁해 -->
+    <tr>
+        <c:forEach var="item" items="${searchTmpWeather}">
+            <td>${item.fcstValue}</td>
+        </c:forEach>
+    </tr>
+    	<!-- 강수 확률 -->
+    <tr>
+    	<c:forEach var="item" items="${searchPopWeather}">
+            <td>${item.fcstValue}%</td>
+        </c:forEach>
+    </tr>
+    	<!-- 습도 -->
+    <tr>
+    	<c:forEach var="item" items="${searchRehWeather}">
+            <td>${item.fcstValue}%</td>
+        </c:forEach>
+    </tr>
+    	<!-- 강수량 -->
+    <tr>
+    	<c:forEach var="item" items="${searchPcpWeather}">
+            <td>${item.fcstValue}</td>
+        </c:forEach>
+    </tr>
+    	<!-- 맑음 상태 -->
+</table>
+
+
+
+
+<%-- <table border="1">
 	<c:forEach items="${searchTmpWeather}" var="item"> 
 		<tr>
 			<td>${item.fcstValue}</td>
@@ -306,7 +316,7 @@ $(document).ready(function(){
 			<td>${item.fcstValue}</td>
 		</tr>
 	</c:forEach>
-</table>
+</table> --%>
 
 <!--        <table> -->
 <!--         표 본문글 -->
@@ -359,43 +369,38 @@ $(document).ready(function(){
     
     <!-- 왼쪽 구역4 -->
     <div class="content-left-4">
-    	<table border="1" style="table-layout:fixed">
-	    	<thead>
-		    </thead>
-	    	<tbody>
-				<tr>
-		    	<td style="width:20 0">습도:</td>
-		        <c:forEach var="item" items="${searchweather}">
-		                <c:if test="${item.category eq 'REH'}">
-		                   <td>${item.fcstValue}%</td>
-		                </c:if>
-		                <c:if test="${item.category eq 'SKY'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'POP'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'TMP'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'UUU'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'VEC'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'VVV'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		                <c:if test="${item.category eq 'PCP'}">
-		                   <tr>${item.fcstValue}</tr>
-		                </c:if>
-		        </c:forEach>
-			    </tr>
-		    </tbody>
-		</table>
+    <div class="item-weather-info" id="wf3">
+					<div>${MediumData.get(0).date}</div>
+					<div>${MediumData.get(0).dayOfWeek}요일</div>
+					<div class="morning" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${morningWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Am}
+					</div>
+					<div class="night" style="display: none;">
+					<div class="weathers">
+						<c:forEach var="entry" items="${nightWeatherMap}">
+	    					<c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
+	        					<i class="wi ${entry.value}"></i>
+	    					</c:if>
+						</c:forEach>
+					</div>
+					${weather.response.body.items.item.get(0).wf3Pm}
+					</div>
+					
+					<div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
+					<div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
+					<div>
+						<i class="wi wi-raindrop" id="rain-rate"></i>
+						${weather.response.body.items.item.get(0).rnSt3Am}%
+					</div>
+				</div>
     </div>
-
     <!-- 왼쪽 구역5 (임시코드) -->
     <div class="content-left-5">왼5
         <%
@@ -462,23 +467,26 @@ $(document).ready(function(){
   <!-- 오른쪽 구역 -->
   <div class="content_right">
     <!-- 오른쪽 구역1 -->
-    <div class="content_right_1">오1
-       <c:forEach var="item" items="${searchTmpweather}">
-    		 온도 ${item.fcstValue}
-       </c:forEach>
+    <div class="content_right_1">
+    <div class="home-center-right-map-btn">
+                		<div class="switch-btn" id="switchBtn1"></div>
+                		<div class="switch-btn" id="switchBtn2"></div>
+                	</div>
+                	<div class="home-center-right-map" id="homeCenterMap">
+                	</div>
+                	<div class="home-center-right-map-btn">
+                		<div class="map-btn" id="mapBtn0"></div>
+                		<div class="map-btn" id="mapBtn1"></div>
+                		<div class="map-btn" id="mapBtn2"></div>
+                	</div>
     </div>
     <!-- 오른쪽 구역2 -->
     <div class="content_right_2">
-    <div id="satellight">
-        <!-- 이미지가 여기에 표시될 것입니다. -->
-    </div>
     </div>
     <!-- 오른쪽 구역3 -->
-    <div class="content_right_3">오3</div>
-    <!-- 오른쪽 구역4 -->
-    <div class="content_right_4">오4</div>
-    <!-- 오른쪽 구역5 -->
-    <div class="content_right_5">오5</div>
+    <div class="content_right_3">
+    	<div id="satellight"></div>
+    </div>
   </div>
 </div>
 </div>

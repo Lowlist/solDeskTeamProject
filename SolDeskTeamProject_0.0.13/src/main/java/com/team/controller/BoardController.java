@@ -76,7 +76,9 @@ public class BoardController {
 		request.setAttribute("morningWeatherMap", mediumService.morningWeatherMap());
 		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
+		System.out.println("temperature : " + mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
+		System.out.println("weather : " + mediumService.mediumWeatherRun(area));
 		model.addAttribute("forecast", mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData", mediumService.getDates());
 		model.addAttribute("Area", area);
@@ -110,12 +112,10 @@ public class BoardController {
 		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
-		model.addAttribute("forecast", mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData", mediumService.getDates());
 		model.addAttribute("Area", area);
 		model.addAttribute("error", mediumService.mediumWeatherArea(area));
 		model.addAttribute("areaBox", mediumService.areaBox());
-  		System.out.println("실기간 테스트");
   		model.addAttribute("nowWeather",shortService.nowWeatherList());
   	}
   	
