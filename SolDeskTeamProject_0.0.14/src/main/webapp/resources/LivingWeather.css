@@ -1,0 +1,214 @@
+@charset "UTF-8";
+body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SKY-BORI'; /* 원하는 폰트 이름 지정 */
+    src: url('font/SKYBORI.ttf') format('truetype'); /* TrueType 폰트 경로 지정 */
+}
+.main-home-top-line{
+    display: flex;
+    width: 100%;
+    height: 3%;
+}
+.home-top-icon-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: auto;
+}
+.home-top-icon{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 3%;
+    cursor: pointer;
+}
+#homeTopIconImg{
+    width: 50px;
+    height: 100%;
+ 	background-image: url('img/mini_icon.png');
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+.home-top-menu-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+}
+#homeTopIconWord{
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 18px; 
+	height: 100%;
+}
+.home-top-menu-word{
+	font-family: 'SKY-BORI', sans-serif;
+	height: 100%;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+.home-high-serach-line{
+	display: flex;
+    width: 100%;
+    height: 30%;
+    align-items: center;
+}
+.home-high-left-serach-line{
+	width: 40%;
+	margin-left:25%;
+	margin-right:0px;
+	font-size: 0;
+}
+.home-high-left-serach-line input[type="text"]{
+	align-items: center;
+	width: 85%;  /* 원하는 너비 설정 */ 
+	height: 100%;  /* 높이값 초기화 */
+	line-height : normal;  /* line-height 초기화 */
+	padding: .8em .5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+	font-family: inherit;  /* 폰트 상속 */
+	border: 2px solid #999;
+	border-right:0px;
+	margin-right:0px;
+	border-radius: 0;  /* iSO 둥근모서리 제거 */
+	outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
+	-webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
+	-moz-appearance: none;
+	appearance: none;
+}
+.home-high-left-serach-line input[type="submit"]{
+	line-height : normal;
+	padding: .8em .5em;
+	border: 2px solid #999;
+	border-left: 0px;
+	margin-left:0px;
+	-webkit-appearance: none;
+	border-radius: 0;
+	background-image: url('../resources/img/serach.JPG');
+    background-size: cover;
+    background-repeat: no-repeat; 
+	color: transparent;
+	cursor: pointer;
+}
+.home-high-right-serach-line{
+	width: 200px;
+	height: 40%;
+	margin-left:5%;
+	background-color: green;
+}
+.main-home-high-line{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    height: 20%;
+}
+.home-high-icon-line{
+	display: flex;
+    width: 50%;
+    height: 70%;
+}
+#homeHighIcon{
+	height: 100%;
+	width: 100%;
+	background-image: url('../resources/img/main_logo.png');
+	background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.main-home-header-line{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    align-items:center;
+    position: relative;
+}
+.home-header-menu{
+	width: 15%;
+	height: 100%;
+	border: 1px solid black;
+	border-right: 0px;
+	border-left: 0px;
+	display: flex; /* 텍스트를 수직 및 수평으로 가운데 정렬하기 위해 flexbox 레이아웃 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 20px;
+	transition: background-color 0.5s ease; 
+	cursor: pointer;
+	user-select: none;
+}
+.home-header-menu:hover {
+    background-color: #dee2e6; /* 마우스 호버 시 배경 색상을 빨간색으로 변경 */
+}
+#homeHeaderMenu0{
+	margin-left:auto;
+}
+#homeHeaderMenu4{
+	margin-right:auto;
+}
+
+/* 여기서부터 헤더 끝남 */
+
+.living-center-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 67%;
+    border: 1px solid black;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.living-center-left-line{
+    height: 100%;
+    margin-left: auto;
+    width:50%
+}
+
+
+
+.living-center-right-line{
+   display: flex;
+    width: 20%;
+    height: 100%;
+    margin-right: auto; /* 오른쪽으로부터 자동 마진 부여 */
+    flex-direction: column;
+    border: 1px solid black;
+    border-top:0px;
+    border-bottom:0px;
+}
+
+.living-center-left-content {
+	width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.living-center-right-content {
+	font-family: 'SKY-BORI', sans-serif;
+    font-size: 19px;
+    float: right;
+    height: auto;
+    width: auto;
+    margin: 10px 10px 10px 10px;
+}
+

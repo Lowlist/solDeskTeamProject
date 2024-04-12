@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapper.WeatherMapper">
+
+<insert id="insertSqlData" parameterType="com.team.dto.sql.SqlData">
+	insert into ${tableName} (standard_name,json_data)values(#{standardName},#{jsonData})
+</insert>
+
+<select id="getCountSqlData" resultType="int" parameterType="com.team.dto.sql.SqlData">
+	select count(*) from ${tableName} where standard_name=#{standardName} and date like CONCAT('%', #{nowDate}, '%')
+</select>
+
+<select id="selectJsonData" resultType="String" parameterType="com.team.dto.sql.SqlData">
+	select json_data from ${tableName} where standard_name=#{standardName} and date like CONCAT('%', #{nowDate}, '%')
+</select>
+
+<!-- 단기예보 -->
+<insert id="weatherInsert" parameterType="com.team.dto.shortwthr.ShortWeather">
+	insert into short_weather(baseDate, fcstTime, category, fcstDate, fcstValue, nx, ny, updated, area)
+	values (#{baseDate},#{fcstTime},#{category},#{fcstDate},#{fcstValue},#{nx},#{ny},0,#{area})
+</insert>
+
+<select id="weatherList" resultType="com.team.dto.shortwthr.Item"> 
+	select * from short_weather where category in
+	("POP","PCP","REH","TMP","UUU","VVV","VEC","SKY") and area=#{area} and updated = 0 
+</select>
+
+<select id="nowWeatherList" parameterType="hashmap" resultType="com.team.dto.shortwthr.Item"> 
+	select * from short_weather where fcstDate=#{fcstDate} and
+	fcstTime=#{fcstTime} and area=#{area} and updated = 0 
+</select>
+
+<select id="searchWeather" parameterType="hashmap" resultType="com.team.dto.shortwthr.Item">
+	select * from short_weather where area=#{area} and category=#{category}
+	and fcstTime=#{fcstTime} and fcstDate=#{fcstDate} 
+	</select>
+
+<select id="searchTomorrowWeather" parameterType="hashmap" resultType="com.team.dto.shortwthr.Item"> 
+	select * from short_weather where area=#{area} and
+	category=#{category} and fcstDate=#{fcstDate} 
+</select>
+
+<select id="searchNowWeather" parameterType="hashmap" resultType="com.team.dto.shortwthr.Item"> 
+	select * from short_weather where area=#{area} and
+	category=#{category} and fcstTime=#{fcstTime}
+</select>
+  
+</mapper>
