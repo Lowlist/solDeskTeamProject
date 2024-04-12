@@ -64,24 +64,22 @@ $(document).ready(function() {
     });
 
     // 집가서 할것
-    // function nationInfo(){
-    //     } if (mapImgBoolean){
-    //         let areaValues = Object.values(areas);
-    //         if (intTMN >= -200 && intTMX >= -200) {
-    //             if (mapBtnResult == 0) {
-    //                 $('#miniWeather' + countData).text(areaValues[countData].name + WeatherData.dataTMP);
-    //             } else if (mapBtnResult == 1) {
-    //                 $('#miniWeather' + countData).text(areaValues[countData].name + intTMN);
-    //             } else if (mapBtnResult == 2) {
-    //                 $('#miniWeather' + countData).text(areaValues[countData].name + intTMX);
-    //             }
-    //             console.log(WeatherData.dataTMN);
-    //             countData++;
-    //             if(countData==areaValues.length){
-    //                 countData=0;
-    //             }
-    //         }
-    //     }
+    function nationInfo() {
+        let informDataShow = informDataTime[0];
+        let nationData = informDataShow.informGrade.split(',');
+    
+        // for 루프를 사용하여 각 miniDust 요소의 위치를 설정합니다.
+        for (let i = 0; i < nationData.length; i++) {
+            // 각 miniDust 요소에 대한 ID를 동적으로 생성합니다.
+            let miniDustId = 'miniDust' + i;
+            // 각 miniDust 요소의 위치를 설정합니다.
+            $('#' + miniDustId).css({
+                'top': ((i + 1) * 20) + 'px', // top 위치 계산
+                'left': '70px' // left 위치 고정값 설정
+            });
+        }
+    }
+        
 
     // 이미지를 표시하는 함수
     function showImage() {
@@ -137,106 +135,107 @@ $(document).ready(function() {
             'border': '1px solid black',
             'border-radius': '7px'
         });
-    //서울
-    $('#miniDust0').css({
-        'top': '57px',
-        'left': '70px'
-    });
-    //수원
-    $('#miniDust1').css({
-        'top': '89px',
-        'left': '80px'
-    });
-    //춘천
-    $('#miniDust2').css({
-        'top': '50px',
-        'left': '130px'
-    });
-    //영동
-    $('#miniDust3').css({
-        'top': '63px',
-        'left': '190px'
-    });
-    //대전
-    $('#miniDust4').css({
-        'top': '150px',
-        'left': '85px'
-    });
-    //충주
-    $('#miniDust5').css({
-        'top': '120px',
-        'left': '95px'
-    });
-    //전주
-    $('#miniDust6').css({
-        'top': '188px',
-        'left': '67px'
-    });
-    //광주
-    $('#miniDust7').css({
-        'top': '235px',
-        'left': '60px'
-    });
-    //대구
-    $('#miniDust8').css({
-        'top': '178px',
-        'left': '163px'
-    });
-    //부산
-    $('#miniDust9').css({
-        'top': '233px',
-        'left': '183px'
-    });
-    //태백
-    $('#miniDust10').css({
-        'top': '123px',
-        'left': '183px'
-    });
-    //진주
-    $('#miniDust11').css({
-        'top': '213px',
-        'left': '123px'
-    });
-    //제주
-    $('#miniDust12').css({
-        'top': '343px',
-        'left': '33px'
-    });
+        nationInfo();
+    // //서울
+    // $('#miniDust0').css({
+    //     'top': '57px',
+    //     'left': '70px'
+    // });
+    // //수원
+    // $('#miniDust1').css({
+    //     'top': '89px',
+    //     'left': '80px'
+    // });
+    // //춘천
+    // $('#miniDust2').css({
+    //     'top': '50px',
+    //     'left': '130px'
+    // });
+    // //영동
+    // $('#miniDust3').css({
+    //     'top': '63px',
+    //     'left': '190px'
+    // });
+    // //대전
+    // $('#miniDust4').css({
+    //     'top': '150px',
+    //     'left': '85px'
+    // });
+    // //충주
+    // $('#miniDust5').css({
+    //     'top': '120px',
+    //     'left': '95px'
+    // });
+    // //전주
+    // $('#miniDust6').css({
+    //     'top': '188px',
+    //     'left': '67px'
+    // });
+    // //광주
+    // $('#miniDust7').css({
+    //     'top': '235px',
+    //     'left': '60px'
+    // });
+    // //대구
+    // $('#miniDust8').css({
+    //     'top': '178px',
+    //     'left': '163px'
+    // });
+    // //부산
+    // $('#miniDust9').css({
+    //     'top': '233px',
+    //     'left': '183px'
+    // });
+    // //태백
+    // $('#miniDust10').css({
+    //     'top': '123px',
+    //     'left': '183px'
+    // });
+    // //진주
+    // $('#miniDust11').css({
+    //     'top': '213px',
+    //     'left': '123px'
+    // });
+    // //제주
+    // $('#miniDust12').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust13').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust13').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust14').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust14').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust15').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust15').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust16').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust16').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust17').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust17').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
     
-    $('#miniDust18').css({
-        'top': '343px',
-        'left': '33px'
-    });
+    // $('#miniDust18').css({
+    //     'top': '343px',
+    //     'left': '33px'
+    // });
 }
 
     // 정보 제공 시간
     function informDatas () {
-        var informDataShow = informDataTime[currentImageIndex];
+        let informDataShow = informDataTime[currentImageIndex];
         var showContainer = $('.dust-center-right-inform');
     
     // 기존의 내용을 비워줍니다.
