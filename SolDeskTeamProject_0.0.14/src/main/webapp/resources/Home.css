@@ -1,0 +1,376 @@
+@charset "UTF-8";
+body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+.main-home{
+    min-width: 1200px;
+    width: auto;
+    height: 1200px;
+}
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SKY-BORI'; /* 원하는 폰트 이름 지정 */
+    src: url('font/SKYBORI.ttf') format('truetype'); /* TrueType 폰트 경로 지정 */
+}
+.main-home-top-line{
+    display: flex;
+    width: 100%;
+    height: 3%;
+}
+.home-top-icon-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: auto;
+}
+.home-top-icon{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 3%;
+    cursor: pointer;
+}
+#homeTopIconImg{
+    width: 50px;
+    height: 100%;
+ 	background-image: url('img/mini_icon.png');
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+.home-top-menu-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+}
+#homeTopIconWord{
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 18px; 
+	height: 100%;
+}
+.home-top-menu-word{
+	font-family: 'SKY-BORI', sans-serif;
+	height: 100%;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+.home-high-serach-line{
+	display: flex;
+    width: 100%;
+    height: 30%;
+    align-items: center;
+}
+.home-high-left-serach-line{
+	width: 40%;
+	margin-left:25%;
+	margin-right:0px;
+	font-size: 0;
+}
+.home-high-left-serach-line input[type="text"]{
+	align-items: center;
+	width: 85%;  /* 원하는 너비 설정 */ 
+	height: 100%;  /* 높이값 초기화 */
+	line-height : normal;  /* line-height 초기화 */
+	padding: .8em .5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+	font-family: inherit;  /* 폰트 상속 */
+	border: 2px solid #999;
+	border-right:0px;
+	margin-right:0px;
+	border-radius: 0;  /* iSO 둥근모서리 제거 */
+	outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
+	-webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
+	-moz-appearance: none;
+	appearance: none;
+}
+.home-high-left-serach-line input[type="submit"]{
+	line-height : normal;
+	padding: .8em .5em;
+	border: 2px solid #999;
+	border-left: 0px;
+	margin-left:0px;
+	-webkit-appearance: none;
+	border-radius: 0;
+	background-image: url('img/serach.JPG');
+    background-size: cover;
+    background-repeat: no-repeat; 
+	color: transparent;
+	cursor: pointer;
+}
+.home-high-right-serach-line{
+	width: 200px;
+	height: 40%;
+	margin-left:5%;
+	background-color: green;
+}
+.main-home-high-line{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    height: 20%;
+}
+.home-high-icon-line{
+	display: flex;
+    width: 50%;
+    height: 70%;
+}
+#homeHighIcon{
+	height: 100%;
+	width: 100%;
+	background-image: url('img/main_logo.png');
+	background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.main-home-header-line{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    align-items:center;
+    position: relative;
+}
+.home-header-menu{
+	width: 15%;
+	height: 100%;
+	border: 1px solid black;
+	border-right: 0px;
+	border-left: 0px;
+	display: flex; /* 텍스트를 수직 및 수평으로 가운데 정렬하기 위해 flexbox 레이아웃 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 20px;
+	transition: background-color 0.5s ease; 
+	cursor: pointer;
+	user-select: none;
+}
+.home-header-menu:hover {
+    background-color: #dee2e6; /* 마우스 호버 시 배경 색상을 빨간색으로 변경 */
+}
+#homeHeaderMenu0{
+	margin-left:auto;
+}
+#homeHeaderMenu4{
+	margin-right:auto;
+}
+.main-home-center-line{
+    display: flex;
+    width: 100%;
+    height: 67%;
+}
+.main-home-center-line::after  {
+	position: absolute;
+	width: 100%;
+	height: 900px;
+	content: "";
+	background-image: url('img/main_sky.png');
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	z-index: -1;
+	opacity: 0.4; /* 원하는 투명도를 지정합니다. */
+}
+.home-center-left-line{
+    display: flex;
+    width: 680px;
+    height: 804px;
+    margin-left: auto;
+}
+.home-center-left-small-box-line{
+    display: flex;
+    position: relative;
+    width: 510px;
+    height: 804px;
+    flex-wrap: wrap;
+    justify-content: center; /* 가로 왼쪽 정렬 */
+    align-items: center; /* 세로 위쪽 정렬 */
+}
+.home-center-top-box{
+	display: flex;
+    width: 128px; /* 너비 추가 */
+    height: 128px;
+    margin: 15px;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 20px;
+}
+#homeCenterTopBox3{
+	font-size: 25px;
+	width: 288px; /* 너비 추가 */
+    height: 128px;
+	cursor: pointer;
+	border: 1px solid black;
+	color: white;
+	background-color: rgba(128, 128, 128, 0.4);
+	transition: background-color 0.5s ease; 
+	text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+#homeCenterTopBox5,
+#homeCenterTopBox6,
+#homeCenterTopBox7,
+#homeCenterTopBox8,
+#homeCenterTopBox9,
+#homeCenterTopBox10{
+	cursor: pointer;
+	border: 1px solid black;
+	color: white;
+	background-color: rgba(128, 128, 128, 0.4);
+	transition: background-color 0.5s ease; 
+	text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+#homeCenterTopBox3:hover,
+#homeCenterTopBox5:hover,
+#homeCenterTopBox6:hover,
+#homeCenterTopBox7:hover,
+#homeCenterTopBox8:hover,
+#homeCenterTopBox9:hover,
+#homeCenterTopBox10:hover{
+	background-color: #dee2e6;
+}
+
+#homeCenterTopBox0,
+#homeCenterTopBox1,
+#homeCenterTopBox2,
+#homeCenterTopBox12,
+#homeCenterTopBox13,
+#homeCenterTopBox14{
+}
+.home-center-left-big-box-line{
+	display:flex;
+	width: 170px;
+    height: 100%;
+    margin-right: 20px;
+	justify-content: center; /* 가로 왼쪽 정렬 */
+    align-items: center; /* 세로 위쪽 정렬 */
+}
+.home-center-left-big-box{
+	width: 160px;
+	height: 300px;
+	border: 1px solid black;
+	background-color: pink;	
+}
+.home-center-right-line{
+    display: flex;
+    width: 170px;
+    height: 100%;
+    margin-right: auto;
+}
+.home-center-right-map-line{
+	width: 100%;
+	height: 50%;
+	margin-top:auto;
+    margin-bottom:auto;
+}
+.home-center-right-map{
+	display: flex;
+    width: 292px;
+    height: 375px;
+    filter: saturate(1.9) brightness(1);
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid black; /* 이미지 사이즈에 맞게 테두리 추가 */
+    user-select: none;
+}
+.home-center-right-map-btn{
+	display: flex;
+	width: 100%;
+	height: 7%;
+	margin-top:auto;
+    margin-bottom:auto;
+	user-select: none;
+}
+.switch-btn{
+	width: 50%;
+	height: 100%;
+	background-color:white;
+	border: 1px solid black;
+	font-family: 'KCC-Hanbit', sans-serif;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.map-btn{
+	margin-top: 3px;
+	border: 1px solid black;
+	width: 30px;
+	height: 20px;
+	z-index: 999;
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 13px;
+	background-color: white;
+	text-align: center;
+	line-height: 20px;
+	cursor: pointer;
+	user-select: none;
+}
+#mapBtn0{
+	border-right: 0px;
+}
+#mapBtn1{
+	border-right: 0px;
+}
+.main-home-bottom-line{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    background-color: green;
+}
+.main-home-popup-line{
+    position: absolute; /* 화면에 고정된 위치에 배치 */
+    display:flex;
+   	top: 100%; 
+   	left: 15%;
+    width: 70%; /* 전체 너비를 차지하도록 설정 */
+    z-index: 999; /* 다른 요소 위에 위치하도록 설정 */
+    height: 100%;
+    background-color: white;
+    border: 1px solid black;
+}
+.home-popup-line-1{
+	width: 25%;
+	height: 100%;
+	background-color: red;
+}
+.home-popup-line-2{
+	width: 25%;
+	height: 100%;
+	background-color: blue;
+}
+.home-popup-line-3{
+	width: 25%;
+	height: 100%;
+	background-color: gray;
+}
+.home-popup-line-4{
+	width: 25%;
+	height: 100%;
+	background-color: red;
+}
+.area-info{
+	text-align: center;
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 13px;
+	margin: 3px;
+	
+}
+#areaInfoAddress{
+	
+}
