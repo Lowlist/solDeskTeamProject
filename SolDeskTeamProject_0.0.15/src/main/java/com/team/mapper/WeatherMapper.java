@@ -20,8 +20,9 @@ public interface WeatherMapper {
 	
 	public void weatherInsert(Item weatherEntiy);
 	
+	public void shortWeatherDelete();
 	//전체 리스트 가져오기 
-	public List<Item> weatherList(String area);
+	public List<Item> weatherList(Item weatherData);
 
 //	public List<Item> nowWeatherList(String area ,String fcstDate, String fcstTime);
 

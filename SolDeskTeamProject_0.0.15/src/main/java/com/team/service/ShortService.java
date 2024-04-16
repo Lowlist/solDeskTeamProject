@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.json.JSONArray;
@@ -79,37 +80,30 @@ public class ShortService {
 			
 	        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
 	        String weatherInfo = response.getBody(); // 날씨 정보 가져오기
-//	        System.out.println("확인2"+weatherInfo);
 	        shortWeatherInsert(weatherInfo ,area);
-//	        weatherInfoList.add(weatherInfo); // 리스트에 추가
         }
 	}
 	//insert문
-	public void shortWeatherInsert(String weatherInfo , String area) {
+	public void shortWeatherInsert(String weatherInfo, String area) {
 	    JSONObject jsonObject = new JSONObject(weatherInfo);
-//	    System.out.println("확인" +jsonObject);
 	    JSONArray items = jsonObject.getJSONObject("response").getJSONObject("body").getJSONObject("items").getJSONArray("item");
-	    //Json 데이터 파싱 [직렬화] 
 	    ObjectMapper mapper = new ObjectMapper();
+	    
 	    for (int i = 0; i < items.length(); i++) {
 	        JSONObject itemJson = items.getJSONObject(i);
 	        Item weatherData = null;
-			try {
-				weatherData = mapper.readValue(itemJson.toString(), Item.class);
-			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-//			System.out.println(weatherData);
-			Item weatherEntity = new Item();
+	        try {
+	            weatherData = mapper.readValue(itemJson.toString(), Item.class);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        
+	        if (weatherMapper.weatherList(weatherData) != null) {
+//	            shortWeatherDelete(); // 이미 있는 데이터 삭제
+//	        }
+
+	        Item weatherEntity = new Item();
 	        weatherEntity.setBaseDate(weatherData.getBaseDate());
-//	        weatherEntity.setBaseTime(weatherData.getBaseTime());
 	        weatherEntity.setCategory(weatherData.getCategory());
 	        weatherEntity.setFcstDate(weatherData.getFcstDate());
 	        weatherEntity.setFcstTime(weatherData.getFcstTime());
@@ -117,35 +111,39 @@ public class ShortService {
 	        weatherEntity.setNx(weatherData.getNx());
 	        weatherEntity.setNy(weatherData.getNy());
 	        weatherEntity.setArea(area);
-//	        System.out.println("[확인]  : " +weatherEntity);
 
-	        weatherMapper.weatherInsert(weatherEntity); // 등록성공
-	    }
+	        weatherMapper.weatherInsert(weatherEntity); // 새로운 데이터 삽입
+	        }
+	        }
 	}
+	public void shortWeatherDelete() {
+		weatherMapper.shortWeatherDelete();
+	}
+	
 	//Json 데이터 가져오기
-	public List<Item> weatherList(String area){
-		List<Item> list=weatherMapper.weatherList(area);
-		return list; // JSON 데이터 형식으로 변환(API)해서 리턴(응답)하겠다.
-	}
+//	public List<Item> weatherList(String area){
+//		List<Item> list=weatherMapper.weatherList(area);
+//		return list; // JSON 데이터 형식으로 변환(API)해서 리턴(응답)하겠다.
+//	}
 
 	//category 가져오기
-	public List<String> getCategoryList(String area) {
-	    List<Item> list = weatherMapper.weatherList(area);
-
-	    List<String> categoryList = list.stream()
-                .map(Item::getCategory)
-                .filter(category -> category.equals("TMP"))
-                .collect(Collectors.toList());
-
+//	public List<String> getCategoryList(String area) {
+//	    List<Item> list = weatherMapper.weatherList(area);
+//
+//	    List<String> categoryList = list.stream()
+//                .map(Item::getCategory)
+//                .filter(category -> category.equals("TMP"))
+//                .collect(Collectors.toList());
+//
 //	    List<String> categoryList = new ArrayList<>();
 //
 //	    for (Item item : list) {
 //	        categoryList.add(item.getCategory());
 //	    }
-	    System.out.println("확인 :" + categoryList);
-
-	    return categoryList;
-	}
+//	    System.out.println("확인 :" + categoryList);
+//
+//	    return categoryList;
+//	}
 	
 	//baseTime 가져오기
 	
@@ -189,7 +187,6 @@ public class ShortService {
 	                    return fcstValue;
 	                })
 	    	        .collect(Collectors.toList());
-
 	       return categoryList; // JSON 데이터 형식으로 변환(API)해서 리턴(응답)하겠다.
 	   }
 	
@@ -297,7 +294,7 @@ public class ShortService {
 	
 	//온도 
 	public List<Item> searchTmpWeather(String area) {
-	    List<Item> resultList = new ArrayList<>();
+		List<Item> resultList = new ArrayList<>();
 	    
 	    String currentTime = work.nowTimes();
 	    String currentDate = work.nowDates();
@@ -322,6 +319,17 @@ public class ShortService {
 	        
 	        // weatherMapper.searchWeather(area, category)를 호출하여 결과를 받아온다고 가정하고, resultList에 추가
 	        List<Item> list = weatherMapper.searchWeather(map);
+	        for (Item item : list) {
+	            String formattedTargetTime;
+	            if (targetTime.equals("0000")) {
+	                formattedTargetTime = "0시";
+	            } else {
+	                int hour = Integer.parseInt(targetTime.substring(0, 2));
+	                formattedTargetTime = (hour == 0 ? "0" : hour) + "시";
+	            }
+	            item.setTargetTime(formattedTargetTime);
+	        }
+	        
 	        resultList.addAll(list);
 	    }
 
@@ -488,7 +496,6 @@ public class ShortService {
 //		    System.out.println("확인하기ㅋ :" + resultList);
 		    return resultList;
 		}
-	
 	// 파라미터 값 변환 로직
 	public List<String> shortWeatherArea(String area) {
 //		만약 UTF-8 필요하면 사용해서 바꾸면 됩니다.

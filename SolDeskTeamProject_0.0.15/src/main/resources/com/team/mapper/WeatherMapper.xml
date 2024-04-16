@@ -22,9 +22,12 @@
 	values (#{baseDate},#{fcstTime},#{category},#{fcstDate},#{fcstValue},#{nx},#{ny},0,#{area})
 </insert>
 
+<delete id="shortWeatherDelete" parameterType="com.team.dto.shortwthr.ShortWeather">
+	truncate table short_weather
+</delete>
+
 <select id="weatherList" resultType="com.team.dto.shortwthr.Item"> 
-	select * from short_weather where category in
-	("POP","PCP","REH","TMP","UUU","VVV","VEC","SKY") and area=#{area} and updated = 0 
+	select * from short_weather where baseDate = #{baseDate} and fcstDate = #{fcstDate} and fcstTime = #{fcstTime} and area = #{area}
 </select>
 
 <select id="nowWeatherList" parameterType="hashmap" resultType="com.team.dto.shortwthr.Item"> 

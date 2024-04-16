@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.Arrays" %>
 <c:set var="cp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -155,6 +156,9 @@ function scrollToNext() {
    		<form action="NewInsert" method="post">
    			<button type="submit" class="btn-gradient yellow mini">새로고침</button>		
      	</form>
+     	<form action="delete" method="post">
+   			<button type="submit" class="btn-gradient yellow mini" >삭제</button>		
+     	</form>
      	</div>
         
     </div>
@@ -275,6 +279,11 @@ function scrollToNext() {
         <button type="button" class="btn-prev" onclick="scrollToPrev()"><img src="${cp}/resources/img/left_icon.ico" class="left-img" /></button>
 		<div class="weather-table" style="overflow-x: auto; min-width:95%">
 			<table>
+				<tr>
+			        <c:forEach var="item" items="${searchTmpWeather}">
+			            <td>${item.targetTime}</td>
+			        </c:forEach>
+			    </tr>
 			    <tr>
 			    	<c:forEach var="item" items="${searchSkyWeather}">
 			            <td>
@@ -290,12 +299,11 @@ function scrollToNext() {
 			            </td>
 			        </c:forEach>
 			    </tr>
-					<!-- 기온 --> <!-- 그래프로 나타내는 구조로 부탁해 -->
-			    <tr>
-			        <c:forEach var="item" items="${searchTmpWeather}">
-			            <td>${item.fcstValue}</td>
-			        </c:forEach>
-			    </tr>
+				<tr>
+    			<c:forEach var="item" items="${searchTmpWeather}">
+      			  <td>${item.fcstValue}</td>
+    			</c:forEach>
+				</tr>
 			    	<!-- 강수 확률 -->
 			    <tr>
 			    	<c:forEach var="item" items="${searchPopWeather}">
@@ -348,40 +356,54 @@ function scrollToNext() {
 		        .style("stroke", "blue"); // 직선의 색상 설정
 		</script>
     </div> 
-    
+    <div>주간 정보</div>
     <!-- 왼쪽 구역4 -->
     <div class="content-left-4">
-    <div class="item-weather-info" id="wf3">
-               <div>${MediumData.get(0).date}</div>
-               <div>${MediumData.get(0).dayOfWeek}요일</div>
-               <div class="morning" style="display: none;">
-               <div class="weathers">
-                  <c:forEach var="entry" items="${morningWeatherMap}">
-                      <c:if test="${weather.response.body.items.item.get(0).wf3Am eq entry.key}">
-                          <i class="wi ${entry.value}"></i>
-                      </c:if>
-                  </c:forEach>
-               </div>
-               ${weather.response.body.items.item.get(0).wf3Am}
-               </div>
-               <div class="night" style="display: none;">
-               <div class="weathers">
-                  <c:forEach var="entry" items="${nightWeatherMap}">
-                      <c:if test="${weather.response.body.items.item.get(0).wf3Pm eq entry.key}">
-                          <i class="wi ${entry.value}"></i>
-                      </c:if>
-                  </c:forEach>
-               </div>
-               ${weather.response.body.items.item.get(0).wf3Pm}
-               </div>
-               
-               <div>최저기온:${temper.response.body.items.item.get(0).taMin3}</div>
-               <div>최고기온:${temper.response.body.items.item.get(0).taMax3}</div>
-               <div>
-                  <i class="wi wi-raindrop" id="rain-rate"></i>
-                  ${weather.response.body.items.item.get(0).rnSt3Am}%
-               </div>
-            </div>
+		<div class="weather-table" style="overflow-x: auto; min-width:95%">
+    <table>
+        <tbody>
+            <tr>
+                <c:forEach var="data" items="${MediumData}" varStatus="loop">
+                    <td>${data.dayOfWeek}</td>
+                </c:forEach>
+            </tr>
+            <tr>
+                <c:forEach var="data" items="${MediumData}" varStatus="loop">
+    				<fmt:parseDate value="${data.date}" var="parsedDate" pattern="MM월dd일"/>
+    				<fmt:formatDate value="${parsedDate}" var="formattedDate" pattern="MM.dd"/>
+  					<td>${formattedDate}</td>
+				</c:forEach>
+            </tr>
+            <tr>
+                <c:forEach var="data" items="${MediumData}" varStatus="loop">
+                    <td>
+                        <div class="weathers">
+                            <c:forEach var="entry" items="${morningWeatherMap}">
+                                <c:if test="${weather.response.body.items.item.get(loop.index).wf3Am eq entry.key}">
+                                    <i class="wi ${entry.value}"></i>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        ${weather.response.body.items.item.get(loop.index).wf3Am}
+                    </td>
+                </c:forEach>
+            </tr>
+            <tr>
+                <c:forEach var="data" items="${MediumData}" varStatus="loop">
+                    <td>저: ${temper.response.body.items.item.get(loop.index).taMin3}고: ${temper.response.body.items.item.get(loop.index).taMax3}</td>
+                </c:forEach>
+            </tr>
+            <tr>
+                <c:forEach var="data" items="${MediumData}" varStatus="loop">
+                    <td>
+                        <i class="wi wi-raindrop" id="rain-rate"></i>
+                        ${weather.response.body.items.item.get(loop.index).rnSt3Am}%
+                    </td>
+                </c:forEach>
+            </tr>
+        </tbody>
+    </table>
+    </div>
     </div>
     <!-- 왼쪽 구역5 (임시코드) -->
     <div class="content-left-5">왼5

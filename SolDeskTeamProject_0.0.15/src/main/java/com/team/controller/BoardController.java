@@ -109,21 +109,31 @@ public class BoardController {
 		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
-//		model.addAttribute("forecast", mediumService.mediumForecastRun(area));
 		model.addAttribute("MediumData", mediumService.getDates());
 		model.addAttribute("Area", area);
-//		model.addAttribute("error", mediumService.mediumWeatherArea(area));
-//		model.addAttribute("areaBox", mediumService.areaBox());
-		System.out.println("실기간 테스트");
 		model.addAttribute("nowWeather", shortService.nowWeatherList());
+		model.addAttribute("searchTmpWeather", shortService.searchTmpWeather(area));
+		model.addAttribute("searchRehWeather", shortService.searchRehWeather(area));
+		model.addAttribute("searchPcpWeather", shortService.searchPcpWeather(area));
+		model.addAttribute("searchPopWeather", shortService.searchPopWeather(area));
+		model.addAttribute("searchSkyWeather", shortService.searchSkyWeather(area));
 	}
 
 	// 단기 검색어 & 현재 시간데이터들을 가져오기
 	@PostMapping("/searchWeather")
-	public String searchWeather(@RequestParam("area") String area, Model model) {
-		System.out.println("검색어 불러오기");
+	public String searchWeather(@RequestParam("area") String area, Model model,HttpServletRequest request) {
+		if (area == null || area.isEmpty()) {
+	        // 기본적으로 설정된 지역 정보를 가져오거나 사용자의 위치를 기준으로 설정합니다.
+	        area ="서울"; // 이 부분은 기본 지역을 가져오는 메서드 또는 사용자 위치를 가져오는 메서드로 대체되어야 합니다.
+	    }
 		model.addAttribute("searchweather", shortService.searchWeather(area));
 //		model.addAttribute("searchTomorrowWeather", shortService.searchTomorrowWeather(area));
+		request.setAttribute("morningWeatherMap", mediumService.morningWeatherMap());
+		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
+		model.addAttribute("temper", mediumService.mediumTempRun(area));
+		model.addAttribute("weather", mediumService.mediumWeatherRun(area));
+		model.addAttribute("MediumData", mediumService.getDates());
+		model.addAttribute("Area", area);
 		model.addAttribute("searchTmpWeather", shortService.searchTmpWeather(area));
 		model.addAttribute("searchRehWeather", shortService.searchRehWeather(area));
 		model.addAttribute("searchPcpWeather", shortService.searchPcpWeather(area));
@@ -133,7 +143,6 @@ public class BoardController {
 		System.out.println("확인하기 : " + shortService.searchNowWeather(area));
 		return "Weather/ShortWeather";
 	}
-
 	// 단기 삽입 (완성)
 	@PostMapping("/NewInsert")
 	public String newInsert() {
@@ -142,5 +151,9 @@ public class BoardController {
 //		model.addAttribute("shortInsert",shortService.shortWeatherRun());
 		return "redirect:/Weather/ShortWeather";
 	}
-    
+	@PostMapping("/delete")
+   public String shortWeatherDelete() {
+	   shortService.shortWeatherDelete();
+	   return "redirect:/Weather/ShortWeather";
+   }
 }

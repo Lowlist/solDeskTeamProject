@@ -19,5 +19,6 @@ public class Item{
     public int updated;
     public String area;
     public String imageUrl;
+    private String targetTime;
 }
 
