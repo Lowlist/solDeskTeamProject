@@ -9,12 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="${cp}/resources/MediumLogic.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script type="text/javascript"
-	src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8mxlng67d7"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8mxlng67d7"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8mxlng67d7&submodules=geocoder"></script>
 <link rel="stylesheet" href="${cp}/resources/MediumFc.css">
 <link rel="stylesheet"
 	href="${cp}/resources/weather-icons-master/css/weather-icons.css">
@@ -92,11 +91,7 @@
             });
             }
         });
-        // 입력값이 지역인지 확인하는 함수
-        function isLocation(input) {
-
-            return input.trim().length > 0;
-        }
+        
         $('#areaSelect').change(function(){
             var selectedArea = $(this).val();
             $.ajax({
@@ -107,7 +102,6 @@
                     console.log('Success:', response);
                     // body의 내용을 변경
                     $('body').html(response);
-                    
                     // 선택된 옵션을 첫 번째 옵션으로 이동
                     $('#areaSelect').prepend($('#areaSelect option:selected'));
                 },
@@ -578,11 +572,17 @@
 					</select>
 					</div>
 					<div class="medium-center-right-map-line">
-						<div class="medium-center-right-map" id="mediumCenterMap">
-							<div class="map-btn" id=mapBtn0></div>
-							<div class="map-btn" id=mapBtn1></div>
-							<div class="map-btn" id=mapBtn2></div>
-						</div>
+                	<div class="medium-center-right-map-btn">
+                		<div class="switch-btn" id="switchBtn1"></div>
+                		<div class="switch-btn" id="switchBtn2"></div>
+                	</div>
+                	<div class="medium-center-right-map" id="mediumCenterMap">
+                	</div>
+                	<div class="medium-center-right-map-btn">
+                		<div class="map-btn" id="mapBtn0"></div>
+                		<div class="map-btn" id="mapBtn1"></div>
+                		<div class="map-btn" id="mapBtn2"></div>
+                	</div>
 					</div>
 				</div>
 				<div class="medium-center-right-bottom">

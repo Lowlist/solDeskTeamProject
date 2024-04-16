@@ -1,60 +1,189 @@
     //맵 관련 로직
     $(document).ready(function(){
         let mapId = $('.medium-center-right-map').attr('id');
-        // var mapOptions = {
-        //     center: new naver.maps.LatLng(37.3595704, 127.105399),
-        //     zoom: 10
-        // }
-        // var marker = new naver.maps.Marker(mapId,{
-        //     position: new naver.maps.LatLng(37.3595704, 127.105399),
-        //     map: map
-        // });
-        // 맵 불러오는 기본로직
-        // var map = new naver.maps.Map(mapId,{
-        //     center: new naver.maps.LatLng(37.3595704, 127.105399),
-        //     zoom: 6
-        // });
         var cityhall = new naver.maps.LatLng(36.4967235, 127.9238804);
 
         var map = new naver.maps.Map(mapId, {
                 center: cityhall,
-                zoom: 7
+                zoom: 7,
+                mapTypeControl: true
             });
-        //마커
-        // var marker = new naver.maps.Marker({
-        //         map: map,
-        //         position: cityhall
-        //     });
-        var contentString = [
-                '<div class="">',
-                // '?',
-                '</div>'
-            ].join('');
-
-        var infowindow = new naver.maps.InfoWindow({
-            content: contentString
-        });
-        //,marker가 map옆에 있었음
-        infowindow.open(map);
-
-        window.navermap_authFailure = function () {
-            console.log("인증실패했음");
-        }
-        $("#mapBtn0").css('background-color', 'blue');
-        $("#mapBtn0").css('color', 'white');
-        //맵 버튼 로직
-        $('.map-btn').click(function (){
-            // 모든 버튼에 대한 스타일 초기화
-            $('.map-btn').css({
-                'background-color': 'white',
-                'color': 'black'
+            var infoWindow = new naver.maps.InfoWindow({
+                anchorSkew: true
             });
-            // 클릭한 버튼의 스타일 변경
-            $(this).css({
-                'background-color': 'blue',
-                'color': 'white'
-            });
-            // 버튼 액션
-        });
-
+            
+            map.setCursor('pointer');
+            
+            function searchCoordinateToAddress(latlng) {
+            
+                infoWindow.close();
+            
+                naver.maps.Service.reverseGeocode({
+                    coords: latlng,
+                    orders: [
+                        naver.maps.Service.OrderType.ADDR,
+                        naver.maps.Service.OrderType.ROAD_ADDR
+                    ].join(',')
+                }, function(status, response) {
+                    if (status === naver.maps.Service.Status.ERROR) {
+                        return alert('Something Wrong!');
+                    }
+            
+                    var items = response.v2.results,
+                        address = '',
+                        htmlAddresses = [];
+            
+                    for (var i=0, ii=items.length, item, addrType; i<ii; i++) {
+                        item = items[i];
+                        address = makeAddress(item) || '';
+                        addrType = item.name === 'roadaddr' ? '[도로명 주소]' : '[지번 주소]';
+            
+                        htmlAddresses.push((i+1) +'. '+ addrType +' '+ address);
+                    }
+            
+                    infoWindow.setContent([
+                        '<div style="padding:10px;min-width:200px;line-height:150%;">',
+                        '<h4 style="margin-top:5px;">검색 좌표</h4><br />',
+                        htmlAddresses.join('<br />'),
+                        '</div>'
+                    ].join('\n'));
+            
+                    infoWindow.open(map, latlng);
+                });
+            }
+            
+            function searchAddressToCoordinate(address) {
+                naver.maps.Service.geocode({
+                    query: address
+                }, function(status, response) {
+                    if (status === naver.maps.Service.Status.ERROR) {
+                        return alert('Something Wrong!');
+                    }
+            
+                    if (response.v2.meta.totalCount === 0) {
+                        return alert('totalCount' + response.v2.meta.totalCount);
+                    }
+            
+                    var htmlAddresses = [],
+                        item = response.v2.addresses[0],
+                        point = new naver.maps.Point(item.x, item.y);
+            
+                    if (item.roadAddress) {
+                        htmlAddresses.push(item.roadAddress);
+                    }
+            
+                    if (item.englishAddress) {
+                        htmlAddresses.push(item.englishAddress);
+                    }
+            
+                    infoWindow.setContent([
+                        '<div style="padding:10px;min-width:200px;line-height:150%;">',
+                        '<h4 style="margin-top:5px;">검색 주소 : '+ address +'</h4><br />',
+                        htmlAddresses.join('<br />'),
+                        '</div>'
+                    ].join('\n'));
+            
+                    map.setCenter(point);
+                    infoWindow.open(map, point);
+                });
+            }
+            
+            function initGeocoder() {
+                map.addListener('click', function(e) {
+                    searchCoordinateToAddress(e.coord);
+                });
+            
+                $('#address').on('keydown', function(e) {
+                    var keyCode = e.which;
+            
+                    if (keyCode === 13) { // Enter Key
+                        searchAddressToCoordinate($('#address').val());
+                    }
+                });
+            
+                $('#submit').on('click', function(e) {
+                    e.preventDefault();
+            
+                    searchAddressToCoordinate($('#address').val());
+                });
+            
+                searchAddressToCoordinate('서울시');
+            }
+            
+            function makeAddress(item) {
+                if (!item) {
+                    return;
+                }
+            
+                var name = item.name,
+                    region = item.region,
+                    land = item.land,
+                    isRoadAddress = name === 'roadaddr';
+            
+                var sido = '', sigugun = '', dongmyun = '', ri = '', rest = '';
+            
+                if (hasArea(region.area1)) {
+                    sido = region.area1.name;
+                }
+            
+                if (hasArea(region.area2)) {
+                    sigugun = region.area2.name;
+                }
+            
+                if (hasArea(region.area3)) {
+                    dongmyun = region.area3.name;
+                }
+            
+                if (hasArea(region.area4)) {
+                    ri = region.area4.name;
+                }
+            
+                if (land) {
+                    if (hasData(land.number1)) {
+                        if (hasData(land.type) && land.type === '2') {
+                            rest += '산';
+                        }
+            
+                        rest += land.number1;
+            
+                        if (hasData(land.number2)) {
+                            rest += ('-' + land.number2);
+                        }
+                    }
+            
+                    if (isRoadAddress === true) {
+                        if (checkLastString(dongmyun, '면')) {
+                            ri = land.name;
+                        } else {
+                            dongmyun = land.name;
+                            ri = '';
+                        }
+            
+                        if (hasAddition(land.addition0)) {
+                            rest += ' ' + land.addition0.value;
+                        }
+                    }
+                }
+            
+                return [sido, sigugun, dongmyun, ri, rest].join(' ');
+            }
+            
+            function hasArea(area) {
+                return !!(area && area.name && area.name !== '');
+            }
+            
+            function hasData(data) {
+                return !!(data && data !== '');
+            }
+            
+            function checkLastString (word, lastString) {
+                return new RegExp(lastString + '$').test(word);
+            }
+            
+            function hasAddition (addition) {
+                return !!(addition && addition.value);
+            }
+            
+            naver.maps.onJSContentLoaded = initGeocoder;
     });
+    

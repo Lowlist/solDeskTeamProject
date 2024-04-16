@@ -5,12 +5,15 @@ insert into asos_table (standard_name,json_data) values ('asos','asdads');
 
 select *from asos_table;
 select *from living_table;
+select *from short_table;
+select *from short_weather;
+
 select Count(*) from asos_table where standard_name='asos' and date like '%2024-03-29%';
 drop table asos_table;
 drop table living_table;
-drop table shortweather;
+drop table short_table;
+drop table short_weather;
 drop table medium_table;
-select *from medium_table;
 create table asos_table(
 	`no` INT PRIMARY KEY AUTO_INCREMENT,
     `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
