@@ -106,6 +106,7 @@ public class BoardController {
 			area = "서울";
 		}
 		request.setAttribute("morningWeatherMap", mediumService.morningWeatherMap());
+		System.out.println("확인하기 :" + mediumService.morningWeatherMap());
 		request.setAttribute("nightWeatherMap", mediumService.nightWeatherMap());
 		model.addAttribute("temper", mediumService.mediumTempRun(area));
 		model.addAttribute("weather", mediumService.mediumWeatherRun(area));

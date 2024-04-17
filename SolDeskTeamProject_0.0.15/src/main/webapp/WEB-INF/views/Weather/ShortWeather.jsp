@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -87,6 +87,110 @@ function scrollToNext() {
         behavior: 'smooth'
     });
 }
+
+// AJAX 요청 보내기
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'MediumWeather', true);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        // 응답에서 필요한 부분 추출하기
+        var mediumWeatherHTML = xhr.responseText;
+        var mediumWeatherContainer = document.getElementById('mediumWeatherContainer');
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(mediumWeatherHTML, 'text/html');
+        var contentToExtract = doc.querySelector('.item-weather-info'); // 가져올 부분의 클래스명
+        
+     /*    var dateElement = contentToExtract.querySelector('#a'); // 두 번째 div 요소 선택 (요일 부분)
+        var dayText = dateElement.textContent; // 요일 텍스트 가져오기
+        var trimmedDayText = dayText.replace(/요일/g, ''); // "요일" 텍스트 삭제
+        dateElement.textContent = trimmedDayText; // 가공된 텍스트로 변경
+ */
+        // 가져온 부분을 새로운 div에 넣기
+        mediumWeatherContainer.innerHTML = contentToExtract.outerHTML;
+    }
+};
+xhr.send();
+
+//두 번째 AJAX 요청 보내기
+var xhr2 = new XMLHttpRequest();
+xhr2.open('GET', 'MediumWeather', true);
+xhr2.onreadystatechange = function() {
+    if (xhr2.readyState === 4 && xhr2.status === 200) {
+        // 응답에서 두 번째 필요한 부분 추출하기
+        var mediumWeatherHTML2 = xhr2.responseText;
+        var mediumWeatherContainer2 = document.getElementById('mediumWeatherContainer1');
+        var parser2 = new DOMParser();
+        var doc2 = parser2.parseFromString(mediumWeatherHTML2, 'text/html');
+        var contentToExtract2 = doc2.querySelector('#wf4'); // 가져올 부분의 id
+        // 가져온 부분을 두 번째 div에 넣기
+        mediumWeatherContainer2.innerHTML = contentToExtract2.outerHTML;
+    }
+};
+xhr2.send();
+
+var xhr3 = new XMLHttpRequest();
+xhr3.open('GET', 'MediumWeather', true);
+xhr3.onreadystatechange = function() {
+    if (xhr3.readyState === 4 && xhr3.status === 200) {
+        // 응답에서 두 번째 필요한 부분 추출하기
+        var mediumWeatherHTML3 = xhr3.responseText;
+        var mediumWeatherContainer3 = document.getElementById('mediumWeatherContainer2');
+        var parser3 = new DOMParser();
+        var doc3 = parser3.parseFromString(mediumWeatherHTML3, 'text/html');
+        var contentToExtract3 = doc3.querySelector('#wf5'); // 가져올 부분의 id
+        // 가져온 부분을 두 번째 div에 넣기
+        mediumWeatherContainer3.innerHTML = contentToExtract3.outerHTML;
+    }
+};
+xhr3.send();
+
+var xhr4 = new XMLHttpRequest();
+xhr4.open('GET', 'MediumWeather', true);
+xhr4.onreadystatechange = function() {
+    if (xhr4.readyState === 4 && xhr4.status === 200) {
+        // 응답에서 두 번째 필요한 부분 추출하기
+        var mediumWeatherHTML4 = xhr4.responseText;
+        var mediumWeatherContainer4 = document.getElementById('mediumWeatherContainer3');
+        var parser4 = new DOMParser();
+        var doc4 = parser4.parseFromString(mediumWeatherHTML4, 'text/html');
+        var contentToExtract4 = doc4.querySelector('#wf6'); // 가져올 부분의 id
+        // 가져온 부분을 두 번째 div에 넣기
+        mediumWeatherContainer4.innerHTML = contentToExtract4.outerHTML;
+    }
+};
+xhr4.send();
+
+var xhr5 = new XMLHttpRequest();
+xhr5.open('GET', 'MediumWeather', true);
+xhr5.onreadystatechange = function() {
+    if (xhr5.readyState === 4 && xhr5.status === 200) {
+        // 응답에서 두 번째 필요한 부분 추출하기
+        var mediumWeatherHTML5 = xhr5.responseText;
+        var mediumWeatherContainer5 = document.getElementById('mediumWeatherContainer4');
+        var parser5 = new DOMParser();
+        var doc5 = parser5.parseFromString(mediumWeatherHTML5, 'text/html');
+        var contentToExtract5 = doc5.querySelector('#wf7'); // 가져올 부분의 id
+        // 가져온 부분을 두 번째 div에 넣기
+        mediumWeatherContainer5.innerHTML = contentToExtract5.outerHTML;
+    }
+};
+xhr5.send();
+
+var xhr6 = new XMLHttpRequest();
+xhr6.open('GET', 'MediumWeather', true);
+xhr6.onreadystatechange = function() {
+    if (xhr6.readyState === 4 && xhr6.status === 200) {
+        // 응답에서 두 번째 필요한 부분 추출하기
+        var mediumWeatherHTML6 = xhr6.responseText;
+        var mediumWeatherContainer6 = document.getElementById('mediumWeatherContainer5');
+        var parser6 = new DOMParser();
+        var doc6 = parser6.parseFromString(mediumWeatherHTML6, 'text/html');
+        var contentToExtract6 = doc6.querySelector('#wf8'); // 가져올 부분의 id
+        // 가져온 부분을 두 번째 div에 넣기
+        mediumWeatherContainer6.innerHTML = contentToExtract6.outerHTML;
+    }
+};
+xhr6.send();
 
 </script>
 </head>
@@ -359,51 +463,12 @@ function scrollToNext() {
     <div>주간 정보</div>
     <!-- 왼쪽 구역4 -->
     <div class="content-left-4">
-		<div class="weather-table" style="overflow-x: auto; min-width:95%">
-    <table>
-        <tbody>
-            <tr>
-                <c:forEach var="data" items="${MediumData}" varStatus="loop">
-                    <td>${data.dayOfWeek}</td>
-                </c:forEach>
-            </tr>
-            <tr>
-                <c:forEach var="data" items="${MediumData}" varStatus="loop">
-    				<fmt:parseDate value="${data.date}" var="parsedDate" pattern="MM월dd일"/>
-    				<fmt:formatDate value="${parsedDate}" var="formattedDate" pattern="MM.dd"/>
-  					<td>${formattedDate}</td>
-				</c:forEach>
-            </tr>
-            <tr>
-                <c:forEach var="data" items="${MediumData}" varStatus="loop">
-                    <td>
-                        <div class="weathers">
-                            <c:forEach var="entry" items="${morningWeatherMap}">
-                                <c:if test="${weather.response.body.items.item.get(loop.index).wf3Am eq entry.key}">
-                                    <i class="wi ${entry.value}"></i>
-                                </c:if>
-                            </c:forEach>
-                        </div>
-                        ${weather.response.body.items.item.get(loop.index).wf3Am}
-                    </td>
-                </c:forEach>
-            </tr>
-            <tr>
-                <c:forEach var="data" items="${MediumData}" varStatus="loop">
-                    <td>저: ${temper.response.body.items.item.get(loop.index).taMin3}고: ${temper.response.body.items.item.get(loop.index).taMax3}</td>
-                </c:forEach>
-            </tr>
-            <tr>
-                <c:forEach var="data" items="${MediumData}" varStatus="loop">
-                    <td>
-                        <i class="wi wi-raindrop" id="rain-rate"></i>
-                        ${weather.response.body.items.item.get(loop.index).rnSt3Am}%
-                    </td>
-                </c:forEach>
-            </tr>
-        </tbody>
-    </table>
-    </div>
+	 	<div id="mediumWeatherContainer"></div>
+    	<div id="mediumWeatherContainer1"></div>
+    	<div id="mediumWeatherContainer2"></div>
+    	<div id="mediumWeatherContainer3"></div>
+    	<div id="mediumWeatherContainer4"></div>
+    	<div id="mediumWeatherContainer5"></div>
     </div>
     <!-- 왼쪽 구역5 (임시코드) -->
     <div class="content-left-5">왼5
@@ -469,9 +534,9 @@ function scrollToNext() {
   	</div>
   </div>
   <!-- 오른쪽 구역 -->
-  <div class="content_right">
+  <div class="content-right">
     <!-- 오른쪽 구역1 -->
-    <div class="content_right_1">
+    <div class="content-right-1">
     <div class="home-center-right-map-btn">
                 		<div class="switch-btn" id="switchBtn1"></div>
                 		<div class="switch-btn" id="switchBtn2"></div>
@@ -485,11 +550,11 @@ function scrollToNext() {
                 	</div>
     </div>
     <!-- 오른쪽 구역2 -->
-    <div class="content_right_2">
+    <div class="content-right-2">
     	<div id="satellight"></div>
     </div>
     <!-- 오른쪽 구역3 -->
-    <div class="content_right_3">
+    <div class="content-right-3">
     </div>
   </div>
 </div>
