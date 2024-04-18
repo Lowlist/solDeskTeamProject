@@ -88,7 +88,7 @@ public class BoardController {
     @GetMapping("/DustWeather")
     public void Dust(Model model) {
         System.out.println("미세먼지테스트");
-        model.addAttribute("dust",dustService.weatherDustRun());
+        model.addAttribute("dust",dustService.dustRun());
         /* model.addAttribute("jsonImageData",dustService.getImageUrls()); */
     }
     
