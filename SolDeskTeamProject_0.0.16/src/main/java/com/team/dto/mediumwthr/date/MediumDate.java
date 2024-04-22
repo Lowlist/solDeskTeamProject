@@ -7,4 +7,5 @@ public class MediumDate {
     private String date;
     private String dayOfWeek;
 
+
 }
