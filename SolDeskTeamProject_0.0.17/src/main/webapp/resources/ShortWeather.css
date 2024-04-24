@@ -1,0 +1,323 @@
+.short-weather {
+   	min-width: 1530px;
+    width: auto;
+    height: 1200px;
+}
+/* 헤더 부분 */
+.short-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+	width: 100%;
+    height: 6%;
+    position: relative;
+	border-left: 0px;
+    border-right: 0px;
+}
+.short-header-line{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items:center;
+    position: relative;
+}
+.short-header-menu{
+	width: 80%;
+	height: 100%;
+	display: flex; /* 텍스트를 수직 및 수평으로 가운데 정렬하기 위해 flexbox 레이아웃 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 20px;
+	transition: background-color 0.5s ease; 
+	cursor: pointer;
+	user-select: none;
+}
+.short-header-menu:hover {
+    background-color: #dee2e6; /* 마우스 호버 시 배경 색상을 빨간색으로 변경 */
+}
+
+/* 본문 부분 */
+.main {
+/*     background: gray; */
+    margin: auto;
+    display: grid;
+    width: 99%;
+    height: 100%;
+    grid-template-columns: 69% 30%;
+    justify-content: space-between;
+    /* align-items:stretch; */
+    /* align-items:center; */
+}
+.content-left {
+/*     background: yellow; */
+    width: 100%;
+    font-size: 40px;
+}
+.content-left-1 {
+    margin: 10px;
+/*     background: red; */
+	
+}
+.content-left-1 button {
+	padding: 0;
+	border: none;
+	background: none;
+    font-size: 20px;
+}
+.content-left-1 select {
+    font-size: 20px;
+}
+.content-search {
+	margin: 10px;
+}
+.content-search input {
+	font-size: 20px;	
+}
+.content-search .search {
+	float:left;
+	margin-left:10px;
+}
+.content-search .refresh {
+	float:right;
+}
+
+.content-left-2 {
+    text-align: center;
+    margin: 10px;
+/*     background: orange; */
+/*     border-bottom: 1px solid #d8d8d8; */
+    display: grid;
+    width: 99%;
+    grid-template-columns: 30% 69%;
+    justify-content: space-between;
+}
+.content-left-2-left {
+ 	margin: 10px;
+/*  	border: 1px solid #d8d8d8; */
+}
+.content-left-2-left .temperature {
+	font-size: 80px;
+	float:left;
+}
+.content-left-2-left .state {
+	font-size: 30px;
+	float:left;
+}
+
+.content-left-2-right-1 {
+ margin: 10px;
+/*  border: 1px solid #d8d8d8; */
+ font-size: 30px;
+}
+.content-left-2-right-2 {
+ margin: 10px;
+/*  border: 1px solid #d8d8d8; */
+ font-size: 30px;
+}
+
+.content-left-3 {
+    text-align: center;
+    margin: 10px;
+/*     background: green; */
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+    display:flex;
+}
+.content-left-3 .btn-prev {
+	background-color:transparent;
+}
+.content-left-3 .btn-next {
+	background-color:transparent;
+}
+
+.content-left-3 .left-img {
+	width :30px;
+	padding-bottom: 30px;
+}
+.content-left-3 .right-img {
+	width :30px;
+	padding-bottom: 30px;
+	float:right;
+}
+
+.content-left-3 td {
+	font-size : 30px;
+	min-width: 150px;
+}
+.content-left-4 {
+    margin: 10px;
+    min-height: 400px;
+    border-bottom: 1px solid #d8d8d8;
+	display : flex;
+}
+.content-left-5 {
+    text-align: center;
+    margin: 10px;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-right {
+    width: 100%;
+    font-size: 40px;
+}
+.content-right-1 {
+ margin: 10px;
+    background: #adebad;
+    min-height: 300px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.short-center-right-map{
+	display: flex;
+    width: 100%;
+    height: 375px;
+    filter: saturate(1.9) brightness(1);
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid black; /* 이미지 사이즈에 맞게 테두리 추가 */
+    user-select: none;
+}
+.short-center-right-map-btn{
+	display: flex;
+	width: 100%;
+	height: 7%;
+	margin-top:auto;
+    margin-bottom:auto;
+	user-select: none;
+}
+.content-right-2 {
+ margin: 10px;
+    background: #ccebff;
+    min-height: 250px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-right-3 {
+ margin: 10px;
+    background: #ffb3cc;
+    min-height: 200px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-right-4 {
+ margin: 10px;
+    background: #ffbf80;
+    min-height: 150px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content-right-5 {
+ margin: 10px;
+    background: #b3b3cc;
+    min-height: 300px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+
+.line_chart {
+    overflow-x: scroll;
+}
+
+.content-left-1-left {
+    background: gray;
+    margin: auto;
+ display: grid;
+ width: 99%;
+  grid-template-columns: 30% 69%;
+  justify-content: space-between;
+}
+
+#satellight {
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+    height: auto; /* 높이를 자동으로 조절하여 가로세로 비율을 유지 */
+    max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비로 제한 */
+    max-height: 100%; /* 이미지의 최대 높이를 부모 요소의 높이로 제한 */
+    overflow: hidden; /* 넘치는 부분을 숨김 */
+}
+
+.short-top-line {
+    display: flex;
+    width: 100%;
+    height: 3%;
+}
+
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SKY-BORI'; /* 원하는 폰트 이름 지정 */
+    src: url('font/SKYBORI.ttf') format('truetype'); /* TrueType 폰트 경로 지정 */
+}
+
+.short-top-icon-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: auto;
+}
+
+.short-top-icon{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 3%;
+}
+#shortTopIconImg{
+   	width: 50px;
+    height: 100%;
+ 	background-image: url('img/mini_icon.png');
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat; 
+}
+
+#shortTopIconWord{
+	font-family: 'KCC-Hanbit', sans-serif;
+	font-size: 18px; 
+	height: 100%;
+}
+
+.short-top-menu-line{
+	display: flex;
+    width: 30%;
+    height: 100%;
+}
+
+.short-top-menu-word{
+	font-family: 'SKY-BORI', sans-serif;
+	font-size: 16px;
+	height: 100%;
+	margin-top: 10px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.blind {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+ .cloud-image {
+        width: 80px;
+        height: 80px;
+    }
+
+.clouds-image {
+        width: 80px;
+        height: 80px;
+    }
+
+.sunny-image {
+        width: 100px;
+        height: 100px;
+    }
+
+ul {list-style: none;display: flex;}
+li {padding: 20px}
