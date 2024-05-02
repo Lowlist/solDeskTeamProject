@@ -9,4 +9,5 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AsosDalyInfo {
     public Response response;
+
 }
